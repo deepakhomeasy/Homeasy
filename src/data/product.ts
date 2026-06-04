@@ -1,0 +1,1603 @@
+// data/products-data.ts
+import aleModule from "../assets/ALE Integration Module.png";
+import dc2Rectangle from "../assets/DC2 Smart Curtain Motor (Rectangle Switch).png";
+import di2Rectangle from "../assets/DI2 Smart Dimmer (Rectangle).png";
+import doorGuard from "../assets/DoorGuard HD Video Doorbell.png";
+import dr2Divider from "../assets/DR2 Smart Voltage Divider.png";
+import dseSensor from "../assets/DSE Smart Door Sensor.png";
+import hubMini from "../assets/Mini hub wireless controller.png";
+import reOledRectangle from "../assets/RE-OLED Touch Switch (Rectangle).png";
+import reOledSquare from "../assets/RE-OLED Touch Switch (Square).png";
+import sentinelLock from "../assets/Sentinel Smart Lock Pro.png";
+import ssiSensor from "../assets/SSI Smart Presence Sensor.png";
+import sswRectangle from "../assets/SSW Wireless Multi-Purpose Switch (Rectangle).png";
+import sswSquare from "../assets/SSW Wireless Multi-Purpose Switch (Square).png";
+export interface ProductFeature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface ProductSpec {
+  label: string;
+  value: string;
+}
+
+export interface ProductVariant {
+  name: string;
+  color: string;
+  colorCode: string;
+  price: string;
+  img: string;
+}
+
+export interface ProductGalleryImage {
+  url: string;
+  caption: string;
+}
+
+export interface ProductTestimonial {
+  quote: string;
+  author: string;
+  role: string;
+  rating: number;
+}
+
+export interface ProductFAQ {
+  question: string;
+  answer: string;
+}
+
+export interface Product {
+  id: string;
+  name: string;
+  tagline: string;
+  category: ProductCategory;
+  badge?: string;
+  price: string;
+  originalPrice?: string;
+  heroImg: string;
+  gallery: ProductGalleryImage[];
+  shortDesc: string;
+  longDesc: string;
+  features: ProductFeature[];
+  specs: ProductSpec[];
+  variants: ProductVariant[];
+  testimonials: ProductTestimonial[];
+  faqs: ProductFAQ[];
+  inBox: string[];
+  warranty: string;
+  installationType: string;
+  compatibility: string[];
+  rating: number;
+  reviewCount: number;
+  isBestseller?: boolean;
+  isNew?: boolean;
+}
+
+export type ProductCategory =
+  | 'smart-switches'
+  | 'smart-lighting'
+  | 'climate-control'
+  | 'security'
+  | 'curtain-motors'
+  | 'sensors'
+  | 'hubs'
+  | 'ir-controllers'
+  | 'dimmers'
+  | 'video-doorbells';
+
+export interface CategoryInfo {
+  id: ProductCategory;
+  label: string;
+  icon: string;
+  description: string;
+}
+
+// ─── Categories ───────────────────────────────────────────────────────────────
+
+export const productCategories: CategoryInfo[] = [
+  {
+    id: 'smart-switches',
+    label: 'Smart Switches',
+    icon: '🔲',
+    description: 'Touch-enabled glass panel switches with OLED display, scene control and app connectivity.'
+  },
+  {
+    id: 'smart-lighting',
+    label: 'Smart Lighting',
+    icon: '💡',
+    description: 'RGBW LED strips with music sync, color effects and tunable white lighting systems.'
+  },
+  {
+    id: 'climate-control',
+    label: 'Climate Control',
+    icon: '🌡️',
+    description: 'AI-powered thermostats and HVAC controllers for precision comfort management.'
+  },
+  {
+    id: 'security',
+    label: 'Security Systems',
+    icon: '🔐',
+    description: 'Smart locks, door sensors, and intrusion detection with real-time alerts.'
+  },
+  {
+    id: 'curtain-motors',
+    label: 'Curtain Motors',
+    icon: '🪟',
+    description: 'Silent motorized curtain and blind systems with sun-tracking automation.'
+  },
+  {
+    id: 'sensors',
+    label: 'Smart Sensors',
+    icon: '📡',
+    description: 'Motion, temperature, humidity, gas leak and door/window sensors.'
+  },
+  {
+    id: 'ir-controllers',
+    label: 'IR Controllers',
+    icon: '📺',
+    description: 'Universal infrared controllers for AC, TV, DVD and other IR-enabled devices.'
+  },
+  {
+    id: 'dimmers',
+    label: 'Dimmers',
+    icon: '✨',
+    description: 'Smart dimmer switches and voltage dividers for lighting control.'
+  },
+  {
+    id: 'hubs',
+    label: 'Smart Hubs',
+    icon: '🌐',
+    description: 'Central control units connecting all devices with Wi-Fi and Zigbee support.'
+  },
+  {
+    id: 'video-doorbells',
+    label: 'Video Doorbells',
+    icon: '📹',
+    description: 'HD video doorbells with motion detection and two-way audio communication.'
+  }
+];
+
+// ─── Products ─────────────────────────────────────────────────────────────────
+
+export const productsData: Product[] = [
+  // ═══════════════════════════════════════════════════════════════════════════
+  // SMART SWITCHES
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  {
+    id: 're-oled-rect',
+    name: 'RE-OLED Touch Switch (Rectangle)',
+    tagline: 'OLED Display Smart Switch — 4 Channels with Scene Control',
+    category: 'smart-switches',
+    badge: 'BESTSELLER',
+    price: '₹4,999',
+    originalPrice: '₹6,499',
+    heroImg: reOledRectangle,
+    gallery: [
+      { url: reOledRectangle, caption: 'RE-OLED Rectangle — Front View with OLED Display' },
+      { url: reOledRectangle, caption: 'OLED Screen Showing Device Status' },
+      { url: reOledRectangle, caption: 'Touch Control Zones' },
+      { url: reOledRectangle, caption: 'Night Mode LED Backlight' },
+      { url: reOledRectangle, caption: 'Installed in Modern Bedroom' }
+    ],
+    shortDesc: '4-channel smart touch switch with 0.96" OLED display, haptic feedback, and scene-based automation for complete room control.',
+    longDesc: 'The RE-OLED is ACIS\'s premium touch switch with an integrated OLED display showing real-time status, temperature, date/time, and device names. Each of the 4 channels controls up to 1000W of lighting, fans, or other electrical devices. The OLED display shows which devices are on/off, current scene name, and system information. Four independent scene channels allow you to create custom scenes — Movie, Dinner, Reading, Goodnight — and activate them with a single tap. Compatible with all ACIS hubs and supports wireless mesh networking for reliable communication throughout your home.',
+    features: [
+      { icon: '🔲', title: '4-Channel Control', description: 'Control up to 4 independent electrical circuits (1000W each) from a single elegant glass panel.' },
+      { icon: '📟', title: '0.96" OLED Display', description: 'Real-time status, temperature, date/time, and device names displayed on premium OLED screen.' },
+      { icon: '✨', title: 'Haptic Feedback', description: 'Each touch triggers tactile feedback confirming your command without looking at the panel.' },
+      { icon: '🎬', title: '4 Scene Presets', description: 'Create and execute complex multi-device scenes with a single tap.' },
+      { icon: '🌙', title: 'Night Mode', description: 'Automatic dimming of LED indicators after sunset prevents sleep disruption.' },
+      { icon: '📱', title: 'Full App Control', description: 'Complete control via ACIS iHome app, Alexa, Google Home integration.' }
+    ],
+    specs: [
+      { label: 'Dimensions', value: '72 × 41 × 125mm' },
+      { label: 'Display', value: 'Mono OLED 0.96 inch' },
+      { label: 'Channels', value: '4 ON/OFF Channels' },
+      { label: 'Scene Control', value: '4 Independent Scene Channels' },
+      { label: 'Power per Channel', value: '1000W (5A max, 10A starting)' },
+      { label: 'Input Voltage', value: '180-240V AC, 50-60Hz' },
+      { label: 'Control Type', value: '6 Capacitive Touch Buttons' },
+      { label: 'Wireless', value: 'Mesh Network (RF 2.4GHz)' },
+      { label: 'Processor', value: 'ARM Cortex M (USA)' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Midnight Black', color: 'Midnight Black', colorCode: '#1a1a1a', price: '₹4,999', img: './assets/products/re-oled-rect-variant-1.jpg' },
+      { name: 'Arctic White', color: 'Arctic White', colorCode: '#f5f5f0', price: '₹4,999', img: './assets/products/re-oled-rect-variant-2.jpg' },
+      { name: 'Champagne Gold', color: 'Champagne Gold', colorCode: '#c9a96e', price: '₹5,499', img: './assets/products/re-oled-rect-variant-3.jpg' }
+    ],
+    testimonials: [
+      { quote: 'The OLED display is game-changing. I can see which lights are on and off without unlocking my phone. Absolutely brilliant design.', author: 'Rajesh K.', role: 'Homeowner, Mumbai', rating: 5 },
+      { quote: 'Replaced 4 standard switches with one RE-OLED panel. My living room looks infinitely better and more modern.', author: 'Priya S.', role: 'Interior Designer, Pune', rating: 5 },
+      { quote: 'Installation was straightforward. The documentation is excellent and the customer support team helped with configuration.', author: 'Arjun M.', role: 'Homeowner, Delhi', rating: 4 }
+    ],
+    faqs: [
+      { question: 'Does it work without internet?', answer: 'Yes. All touch controls work offline using the built-in wireless mesh network. Only app remote control requires internet.' },
+      { question: 'Can I control fans with regulators?', answer: 'Yes. Standard on/off control works with all fans. Electronic regulators are supported with separate speed control modules.' },
+      { question: 'What if power cuts?', answer: 'The switch remembers its last state and restores it automatically when power returns.' },
+      { question: 'Is installation complex?', answer: 'No. Direct replacement for standard Indian switchboards with zero additional wiring needed in most homes. 30-45 minutes per panel.' }
+    ],
+    inBox: [
+      'RE-OLED Touch Switch × 1',
+      'Mounting Frame × 1',
+      'Connection Terminal Block × 1',
+      'Screw Set × 1',
+      'Installation Guide × 1',
+      'Warranty Card × 1'
+    ],
+    warranty: '3 Years Manufacturer Warranty',
+    installationType: 'Electrician Required — 30-45 min per panel',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home', 'IFTTT'],
+    rating: 4.8,
+    reviewCount: 1247,
+    isBestseller: true,
+    isNew: false
+  },
+
+  {
+    id: 're-oled-square',
+    name: 'RE-OLED Touch Switch (Square)',
+    tagline: 'Compact OLED Smart Switch — Perfect for Bedrooms and Offices',
+    category: 'smart-switches',
+    price: '₹4,999',
+    originalPrice: '₹6,499',
+    heroImg: reOledSquare,
+    gallery: [
+      { url: reOledSquare, caption: 'RE-OLED Square — Modern Square Design' },
+      { url: reOledSquare, caption: 'Bedroom Installation' },
+      { url: reOledSquare, caption: 'Office Setup' },
+      { url: reOledSquare, caption: 'Touch Interface Detail' }
+    ],
+    shortDesc: 'Square 4-channel OLED smart switch with premium glass design and scene control.',
+    longDesc: 'Same powerful features as the Rectangle version but in a compact square form factor (86×86mm) that fits standard modular switch boxes. Perfect for bedrooms, offices, and compact spaces where rectangular panels might not fit aesthetically.',
+    features: [
+      { icon: '🔲', title: '4-Channel Control', description: 'Control up to 4 independent electrical circuits (1000W each).' },
+      { icon: '📟', title: '0.96" OLED Display', description: 'Real-time status display on premium OLED screen.' },
+      { icon: '✨', title: 'Haptic Feedback', description: 'Tactile confirmation with each touch.' },
+      { icon: '🎬', title: '4 Scene Presets', description: 'Create and execute complex scenes.' },
+      { icon: '🔄', title: 'Wireless Mesh', description: 'Seamless connectivity with ACIS ecosystem.' },
+      { icon: '📱', title: 'App Control', description: 'Full control via ACIS iHome app.' }
+    ],
+    specs: [
+      { label: 'Dimensions', value: '86 × 86 × 28mm' },
+      { label: 'Display', value: 'Mono OLED 0.96 inch' },
+      { label: 'Channels', value: '4 ON/OFF Channels' },
+      { label: 'Power per Channel', value: '1000W (5A max)' },
+      { label: 'Input Voltage', value: '180-240V AC, 50-60Hz' },
+      { label: 'Touch Buttons', value: '6 Capacitive Touch' },
+      { label: 'Wireless', value: 'Mesh Network 2.4GHz' },
+      { label: 'Processor', value: 'ARM Cortex M' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Midnight Black', color: 'Midnight Black', colorCode: '#1a1a1a', price: '₹4,999', img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80' },
+      { name: 'Arctic White', color: 'Arctic White', colorCode: '#f5f5f0', price: '₹4,999', img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80' }
+    ],
+    testimonials: [
+      { quote: 'The square design fits perfectly in my apartment\'s standard switch boxes. No modification needed.', author: 'Neha P.', role: 'Homeowner, Bengaluru', rating: 5 },
+      { quote: 'Love the compact form factor. Same power as the rectangle but looks cleaner on smaller walls.', author: 'Vikram S.', role: 'Office Manager, Hyderabad', rating: 4 }
+    ],
+    faqs: [
+      { question: 'What is the difference between square and rectangle?', answer: 'Only the form factor. Square (86×86mm) fits standard modular boxes. Rectangle (72×41mm) is slightly larger. Features and power are identical.' },
+      { question: 'Can both be used in the same home?', answer: 'Yes. They communicate seamlessly via the same wireless mesh network and can be controlled through one ACIS Hub.' }
+    ],
+    inBox: [
+      'RE-OLED Square Switch × 1',
+      'Mounting Frame × 1',
+      'Terminal Block × 1',
+      'Hardware Kit × 1',
+      'Setup Guide × 1'
+    ],
+    warranty: '3 Years Manufacturer Warranty',
+    installationType: 'Electrician Required — 30-45 min',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home'],
+    rating: 4.7,
+    reviewCount: 856,
+    isBestseller: false,
+    isNew: false
+  },
+
+  {
+    id: 'ssw-wireless-rect',
+    name: 'SSW Wireless Multi-Purpose Switch (Rectangle)',
+    tagline: 'No Display, Pure Simplicity — 4 ON/OFF + 8 Scene Channels',
+    category: 'smart-switches',
+    price: '₹3,499',
+    originalPrice: '₹4,999',
+    heroImg: sswRectangle,
+    gallery: [
+      { url: sswRectangle, caption: 'SSW Wireless Rectangle Switch' },
+      { url: sswRectangle, caption: 'Touch Control Zones' },
+      { url: sswRectangle, caption: 'LED Status Indicators' },
+      { url: sswRectangle, caption: 'Installed in Living Room' }
+    ],
+    shortDesc: '4-channel wireless smart switch with 8 scene preset buttons, 20A circuit breaker, and integrated speaker feedback.',
+    longDesc: 'SSW is ACIS\'s streamlined wireless switch without the OLED display. It focuses on pure functionality: 4 independent on/off channels (1000W each) plus 8 dedicated scene preset buttons that you can configure for any custom automation. The 20A integrated circuit breaker protects your wiring. LED indicators show channel status and power state. The integrated speaker provides audible feedback on every action. Perfect for those who prefer physical buttons for common scenes over looking at a display.',
+    features: [
+      { icon: '🔲', title: '4 ON/OFF Channels', description: 'Control up to 4 independent circuits at 1000W each.' },
+      { icon: '🎬', title: '8 Scene Channels', description: '8 dedicated buttons for custom scene activation — no menu navigation needed.' },
+      { icon: '🔌', title: '20A Circuit Breaker', description: 'Integrated protection for your home\'s electrical safety.' },
+      { icon: '🔊', title: 'Audible Feedback', description: 'Built-in speaker confirms every action with sound.' },
+      { icon: '💡', title: 'LED Status Indicators', description: 'Visual confirmation of each channel and power state.' },
+      { icon: '📱', title: 'Wireless + App Control', description: 'Wireless mesh networking plus full app control.' }
+    ],
+    specs: [
+      { label: 'Dimensions', value: '72 × 28 × 125mm' },
+      { label: 'Display', value: 'None — LED Indicators Only' },
+      { label: 'ON/OFF Channels', value: '4 Channels' },
+      { label: 'Scene Channels', value: '8 Dedicated Scene Buttons' },
+      { label: 'Power per Channel', value: '1000W (5A max)' },
+      { label: 'Circuit Breaker', value: '20A Built-in' },
+      { label: 'Input Voltage', value: '180-240V AC, 50-60Hz' },
+      { label: 'Touch Buttons', value: '4 ON/OFF + 8 Scene' },
+      { label: 'Speaker', value: 'Built-in Audible Feedback' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Pure White', color: 'White', colorCode: '#ffffff', price: '₹3,499', img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80' },
+      { name: 'Deep Black', color: 'Black', colorCode: '#1a1a1a', price: '₹3,499', img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80' }
+    ],
+    testimonials: [
+      { quote: 'I like physical buttons for scenes. SSW gives me 8 dedicated buttons without a confusing menu. Perfect for my lifestyle.', author: 'Sanjay K.', role: 'Homeowner, Ahmedabad', rating: 5 },
+      { quote: 'The 20A circuit breaker is a big safety plus. Professional electricians approve of this design.', author: 'Electrician Reviews', role: 'Installation Partner, Pan-India', rating: 5 }
+    ],
+    faqs: [
+      { question: 'Why no display?', answer: 'Simpler design, lower cost, and many users prefer dedicated scene buttons over menus. If you want status info, choose RE-OLED.' },
+      { question: 'Can I change scene assignments?', answer: 'Yes. Use the ACIS app to reassign any of the 8 scene buttons to different automations.' }
+    ],
+    inBox: [
+      'SSW Wireless Switch Rectangle × 1',
+      'Mounting Frame × 1',
+      'Terminal Block × 1',
+      'Hardware Kit × 1',
+      'Documentation × 1'
+    ],
+    warranty: '3 Years Manufacturer Warranty',
+    installationType: 'Electrician Required — 30-40 min',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home'],
+    rating: 4.6,
+    reviewCount: 734,
+    isBestseller: false,
+    isNew: false
+  },
+
+  {
+    id: 'ssw-wireless-square',
+    name: 'SSW Wireless Multi-Purpose Switch (Square)',
+    tagline: 'Compact Wireless Switch — 5 Scene Buttons, Zero Display',
+    category: 'smart-switches',
+    price: '₹3,499',
+    originalPrice: '₹4,999',
+    heroImg: sswSquare,
+    gallery: [
+      { url: sswSquare, caption: 'SSW Square — Compact Form Factor' },
+      { url: sswSquare, caption: 'Scene Button Layout' },
+      { url: sswSquare, caption: 'Bedroom Installation' }
+    ],
+    shortDesc: 'Square wireless switch with 5 scene buttons, perfect for compact spaces.',
+    longDesc: 'The square variant of SSW offering the same wireless functionality in a compact 86×86mm form factor. Features 4 ON/OFF channels and 5 dedicated scene preset buttons.',
+    features: [
+      { icon: '🔲', title: '4 ON/OFF Channels', description: 'Control 4 independent circuits.' },
+      { icon: '🎬', title: '5 Scene Buttons', description: '5 dedicated preset buttons for common scenes.' },
+      { icon: '🔌', title: '20A Breaker', description: 'Integrated circuit protection.' },
+      { icon: '🔊', title: 'Audio Feedback', description: 'Built-in speaker confirmation.' },
+      { icon: '📱', title: 'Wireless Control', description: 'Full mesh network + app connectivity.' }
+    ],
+    specs: [
+      { label: 'Dimensions', value: '86 × 86 × 28mm' },
+      { label: 'ON/OFF Channels', value: '4 Channels' },
+      { label: 'Scene Buttons', value: '5 Dedicated' },
+      { label: 'Power per Channel', value: '1000W' },
+      { label: 'Circuit Breaker', value: '20A Built-in' },
+      { label: 'Input Voltage', value: '180-240V AC, 50-60Hz' },
+      { label: 'Wireless', value: 'Mesh Network 2.4GHz' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Pure White', color: 'White', colorCode: '#ffffff', price: '₹3,499', img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80' },
+      { name: 'Deep Black', color: 'Black', colorCode: '#1a1a1a', price: '₹3,499', img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80' }
+    ],
+    testimonials: [
+      { quote: 'Perfect for my apartment. The square design looks modern and the scene buttons are intuitive.', author: 'Anjali M.', role: 'Homeowner, Bangalore', rating: 5 }
+    ],
+    faqs: [
+      { question: 'Is this the same as rectangle SSW?', answer: 'Same features, just different form factor. Square fits standard modular boxes perfectly.' }
+    ],
+    inBox: [
+      'SSW Square Switch × 1',
+      'Mounting Frame × 1',
+      'Terminal Block × 1',
+      'Hardware Kit × 1',
+      'Documentation × 1'
+    ],
+    warranty: '3 Years Manufacturer Warranty',
+    installationType: 'Electrician Required — 30-40 min',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home'],
+    rating: 4.5,
+    reviewCount: 589,
+    isBestseller: false,
+    isNew: false
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // DIMMERS
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  {
+    id: 'di2-dimmer-rect',
+    name: 'DI2 Smart Dimmer (Rectangle)',
+    tagline: 'Intelligent Brightness Control — 2 Channels, 1% Step Resolution',
+    category: 'dimmers',
+    badge: 'NEW LAUNCH',
+    price: '₹5,499',
+    originalPrice: '₹7,499',
+    heroImg: di2Rectangle,
+    gallery: [
+      { url: di2Rectangle, caption: 'DI2 Dimmer with OLED Display' },
+      { url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80', caption: 'Dimming Adjustment Detail' },
+      { url: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80', caption: 'Living Room Setup' },
+      { url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80', caption: 'Brightness Level Display' }
+    ],
+    shortDesc: '2-channel smart dimmer with OLED display, 1% brightness resolution, and DimTriac standard (300W per channel).',
+    longDesc: 'DI2 brings intelligent dimming to any room. The two independent channels support DimTriac standard dimmers for smooth, flicker-free brightness adjustment from 1% to 100% with 1% step resolution. The OLED display shows current brightness levels, giving you precise feedback. Perfect for creating ambient lighting in living rooms, mood lighting in bedrooms, or task lighting in kitchens. The dimmer automatically prevents LED flicker and maintains steady illumination at all brightness levels.',
+    features: [
+      { icon: '✨', title: '2-Channel Dimming', description: 'Independent brightness control for 2 separate lighting zones.' },
+      { icon: '🎚️', title: '1% Step Resolution', description: 'Fine-grained brightness control from 1% to 100%.' },
+      { icon: '📟', title: 'OLED Display', description: 'Real-time brightness level and dimmer status display.' },
+      { icon: '🚫', title: 'Zero Flicker Technology', description: 'Advanced circuitry prevents LED flicker at any brightness.' },
+      { icon: '💡', title: 'LED Compatible', description: 'Works perfectly with LED, CFL, and incandescent bulbs.' },
+      { icon: '🔄', title: 'Memory Function', description: 'Remembers last brightness level for each channel.' }
+    ],
+    specs: [
+      { label: 'Dimensions', value: '72 × 41 × 125mm' },
+      { label: 'Dimming Channels', value: '2 DimTriac Channels' },
+      { label: 'Max Power per Channel', value: '300W' },
+      { label: 'Brightness Resolution', value: '1% Steps (1-100%)' },
+      { label: 'Display', value: 'Mono OLED 0.96 inch' },
+      { label: 'Input Voltage', value: '180-240V AC, 50-60Hz' },
+      { label: 'Touch Buttons', value: '6 Capacitive' },
+      { label: 'LED Flicker', value: 'Zero Flicker Technology' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Midnight Black', color: 'Midnight Black', colorCode: '#1a1a1a', price: '₹5,499', img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80' },
+      { name: 'Arctic White', color: 'Arctic White', colorCode: '#f5f5f0', price: '₹5,499', img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80' }
+    ],
+    testimonials: [
+      { quote: 'The dimmer is so smooth. No flicker even at 1% brightness. Perfect for movie nights and reading.', author: 'Rakesh T.', role: 'Homeowner, Chennai', rating: 5 },
+      { quote: 'The OLED display showing exact brightness percentage is a nice touch. Very precise control.', author: 'Shreya K.', role: 'Interior Designer, Hyderabad', rating: 5 }
+    ],
+    faqs: [
+      { question: 'Does it work with all bulb types?', answer: 'Yes. Works perfectly with LED, CFL, and incandescent bulbs. The zero-flicker technology ensures smooth operation across all types.' },
+      { question: 'Can I use it for fan speed control?', answer: 'No, the DI2 is specifically for lighting. For fan speed control, use the SSW or RE-OLED switches with a separate fan regulator module.' },
+      { question: 'What is DimTriac?', answer: 'DimTriac is the industry standard for AC dimming. It provides smooth, flicker-free brightness control for both traditional and modern bulbs.' }
+    ],
+    inBox: [
+      'DI2 Dimmer Rectangle × 1',
+      'Mounting Frame × 1',
+      'Terminal Block × 1',
+      'Hardware Kit × 1',
+      'Setup Guide × 1'
+    ],
+    warranty: '3 Years Manufacturer Warranty',
+    installationType: 'Electrician Required — 30-45 min',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home'],
+    rating: 4.7,
+    reviewCount: 412,
+    isBestseller: false,
+    isNew: true
+  },
+
+  {
+    id: 'di2-dimmer-square',
+    name: 'DI2 Smart Dimmer (Square)',
+    tagline: 'Compact 2-Channel Dimmer — Perfect for Bedrooms',
+    category: 'dimmers',
+    price: '₹5,499',
+    originalPrice: '₹7,499',
+    heroImg: dc2Rectangle ,
+    gallery: [
+      { url: dc2Rectangle , caption: 'DI2 Square Dimmer' },
+      { url: dc2Rectangle , caption: 'Display Detail' },
+      { url: dc2Rectangle , caption: 'Bedroom Installation' }
+    ],
+    shortDesc: 'Square 2-channel dimmer with same powerful features in compact 86×86mm form.',
+    longDesc: 'Same advanced dimming features as the rectangle DI2, but in a compact square form factor that fits perfectly in standard modular switch boxes.',
+    features: [
+      { icon: '✨', title: '2-Channel Dimming', description: 'Independent brightness control for 2 zones.' },
+      { icon: '🎚️', title: '1% Resolution', description: 'Ultra-fine brightness control.' },
+      { icon: '📟', title: 'OLED Display', description: 'Real-time brightness feedback.' },
+      { icon: '🚫', title: 'Zero Flicker', description: 'Advanced flicker prevention.' },
+      { icon: '💡', title: 'LED/CFL/Incandescent', description: 'Works with all bulb types.' }
+    ],
+    specs: [
+      { label: 'Dimensions', value: '86 × 86 × 28mm' },
+      { label: 'Channels', value: '2 DimTriac' },
+      { label: 'Max Power', value: '300W per channel' },
+      { label: 'Resolution', value: '1% Steps' },
+      { label: 'Display', value: 'OLED 0.96"' },
+      { label: 'Input', value: '180-240V AC' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Midnight Black', color: 'Midnight Black', colorCode: '#1a1a1a', price: '₹5,499', img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80' },
+      { name: 'Arctic White', color: 'Arctic White', colorCode: '#f5f5f0', price: '₹5,499', img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80' }
+    ],
+    testimonials: [
+      { quote: 'The square design fits perfectly in my modular boxes. Same quality as rectangle at same price.', author: 'Harsh P.', role: 'Homeowner, Pune', rating: 5 }
+    ],
+    faqs: [
+      { question: 'What is the difference between square and rectangle DI2?', answer: 'Only the form factor. All features and power specifications are identical.' }
+    ],
+    inBox: [
+      'DI2 Dimmer Square × 1',
+      'Mounting Frame × 1',
+      'Terminal Block × 1',
+      'Hardware Kit × 1',
+      'Setup Guide × 1'
+    ],
+    warranty: '3 Years Manufacturer Warranty',
+    installationType: 'Electrician Required — 30-40 min',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home'],
+    rating: 4.6,
+    reviewCount: 298,
+    isBestseller: false,
+    isNew: true
+  },
+
+  {
+    id: 'dr2-voltage-divider',
+    name: 'DR2 Smart Voltage Divider',
+    tagline: 'Multi-Function Dimmer + ON/OFF — Brightness + Scene Control',
+    category: 'dimmers',
+    price: '₹4,999',
+    originalPrice: '₹6,999',
+    heroImg: dr2Divider,
+    gallery: [
+      { url: dr2Divider, caption: 'DR2 Voltage Divider Controller' },
+      { url: dr2Divider, caption: 'Rotary Knob Dimming Control' },
+      { url: dr2Divider, caption: 'LED Brightness Display' },
+      { url: dr2Divider, caption: 'Installed in Modern Room' }
+    ],
+    shortDesc: 'Hybrid dimmer + switch combining 1-channel brightness control (300W) with 2 ON/OFF channels (1000W each) plus 2 scene presets.',
+    longDesc: 'DR2 is ACIS\'s most versatile dimming solution. It combines a primary 1-channel DimTriac dimmer (up to 300W) with a secondary rotary knob interface, plus 2 independent ON/OFF relay channels (1000W each). The rotary knob allows tactile, intuitive brightness adjustment. Two additional buttons serve as scene preset triggers or can control additional ON/OFF devices. The LED display shows current brightness level. Perfect for applications where you need both dimming (for mood lighting) and standard on/off control (for ceiling fans or other devices) in a single panel.',
+    features: [
+      { icon: '🎚️', title: '1 Dimmer Channel', description: 'Primary DimTriac channel with rotary knob control up to 300W.' },
+      { icon: '🔲', title: '2 ON/OFF Channels', description: '2 independent relay channels at 1000W each for lights, fans, sockets.' },
+      { icon: '🎬', title: '2 Scene Presets', description: '2 programmable scene buttons for complex automation.' },
+      { icon: '📊', title: 'LED Brightness Display', description: 'Visual indication of current dimmer level.' },
+      { icon: '🔄', title: 'Memory Function', description: 'Remembers last brightness setting for each session.' },
+      { icon: '📱', title: 'Full App Control', description: 'Remote control via ACIS app plus local wireless operation.' }
+    ],
+    specs: [
+      { label: 'Dimensions', value: '72 × 41 × 125mm' },
+      { label: 'Dimmer Channels', value: '1 DimTriac (300W max)' },
+      { label: 'ON/OFF Channels', value: '2 Relay Channels (1000W each)' },
+      { label: 'Scene Buttons', value: '2 Programmable' },
+      { label: 'Control Method', value: 'Rotary Knob + Touch Buttons' },
+      { label: 'Input Voltage', value: '180-240V AC, 50-60Hz' },
+      { label: 'Brightness Steps', value: '1% Resolution' },
+      { label: 'Wireless', value: 'Mesh Network 2.4GHz' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Midnight Black', color: 'Midnight Black', colorCode: '#1a1a1a', price: '₹4,999', img: './assets/DR2 Smart Voltage Divider (Rectangle).png' },
+      { name: 'Arctic White', color: 'Arctic White', colorCode: '#f5f5f0', price: '₹4,999', img: './assets/DR2 Smart Voltage Divider (Rectangle).png' }
+    ],
+    testimonials: [
+      { quote: 'The rotary knob is intuitive for brightness control. I can adjust lighting without touching my phone. Perfect hybrid design.', author: 'Meera J.', role: 'Homeowner, Jaipur', rating: 5 },
+      { quote: 'Combination dimmer + switches gives me everything I need in one panel. Excellent engineering.', author: 'Rajesh M.', role: 'Architect, Mumbai', rating: 5 }
+    ],
+    faqs: [
+      { question: 'What is the difference between DR2 and DI2?', answer: 'DI2 has 2 dimmer channels with OLED display. DR2 has 1 dimmer channel + 2 ON/OFF channels with rotary knob control. Different use cases.' },
+      { question: 'Can I control fan speed with the rotary knob?', answer: 'Not for AC fans. The rotary is for DimTriac dimmers (lighting only). For fan speed control, use a dedicated fan regulator module.' }
+    ],
+    inBox: [
+      'DR2 Voltage Divider × 1',
+      'Mounting Frame × 1',
+      'Terminal Block × 1',
+      'Hardware Kit × 1',
+      'Setup Guide × 1'
+    ],
+    warranty: '3 Years Manufacturer Warranty',
+    installationType: 'Electrician Required — 30-45 min',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home'],
+    rating: 4.5,
+    reviewCount: 367,
+    isBestseller: false,
+    isNew: false
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // CURTAIN MOTORS
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  {
+    id: 'dc2-curtain-motor-rect',
+    name: 'DC2 Smart Curtain Motor (Rectangle Switch)',
+    tagline: 'Silent Motor Control — Open/Close/Stop with Scene Integration',
+    category: 'curtain-motors',
+    price: '₹6,999',
+    originalPrice: '₹8,999',
+    heroImg: dc2Rectangle,
+    gallery: [
+      { url: dc2Rectangle, caption: 'DC2 Motor Control Switch' },
+      { url: dc2Rectangle, caption: 'Curtain Opening Sequence' },
+      { url: dc2Rectangle, caption: 'Full Room Installation' },
+      { url: dc2Rectangle, caption: 'App Control Dashboard' }
+    ],
+    shortDesc: '2-channel curtain motor controller with Open/Close/Stop control, scene integration, and wireless automation.',
+    longDesc: 'DC2 provides complete control for motorized curtains and blind systems. The wireless controller sends Open/Close/Stop commands to curtain motors with dry contact relay outputs compatible with 99% of motor brands. Features 2 independent channels for dual-curtain or multi-room setups. Integrate with ACIS scenes to open curtains at sunrise or close them at specific times. The controller supports scene presets — open both bedroom and living room curtains with a single tap.',
+    features: [
+      { icon: '🪟', title: '2-Channel Motor Control', description: 'Control 2 independent curtain motors for dual-curtain or multi-room setups.' },
+      { icon: '⬆️', title: 'Three-Position Control', description: 'Open, Close, and Stop commands with individual button control.' },
+      { icon: '🔁', title: 'Dry Contact Relays', description: 'Standard NO contact relays compatible with 99% of motor brands.' },
+      { icon: '🎬', title: 'Scene Integration', description: 'Include curtain control in complex scenes — open with lights and AC on morning schedule.' },
+      { icon: '📱', title: 'App + Voice Control', description: 'Full remote control via ACIS app, Alexa, and Google Home.' },
+      { icon: '🔄', title: 'Manual Override', description: 'Physical buttons for local control when internet is down.' }
+    ],
+    specs: [
+      { label: 'Dimensions', value: '72 × 28 × 125mm' },
+      { label: 'Motor Channels', value: '2 Independent Channels' },
+      { label: 'Contact Type', value: '2 NO (Normally Open)' },
+      { label: 'Max Contact Current', value: '5A per channel' },
+      { label: 'Control Commands', value: 'Open, Close, Stop' },
+      { label: 'Input Voltage', value: '180-240V AC, 50-60Hz' },
+      { label: 'Touch Buttons', value: '6 Capacitive' },
+      { label: 'Wireless', value: 'Mesh Network 2.4GHz' },
+      { label: 'LED Indicators', value: 'Channel Status + Power' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Midnight Black', color: 'Midnight Black', colorCode: '#1a1a1a', price: '₹6,999', img: dc2Rectangle },
+      { name: 'Arctic White', color: 'Arctic White', colorCode: '#f5f5f0', price: '₹6,999', img: dc2Rectangle }
+    ],
+    testimonials: [
+      { quote: 'Works perfectly with my existing curtain motors. The ACIS integration means my curtains open with my morning routine.', author: 'Sunita K.', role: 'Homeowner, Delhi', rating: 5 },
+      { quote: 'The dry contact relay design is future-proof. I can use any motor brand without compatibility issues.', author: 'Electrician Reviews', role: 'Installation Expert, Pan-India', rating: 5 }
+    ],
+    faqs: [
+      { question: 'Will it work with my existing curtain motor?', answer: 'Yes. DC2 uses standard dry contact relays compatible with 99% of motor brands globally.' },
+      { question: 'Can I control multiple curtains in one room?', answer: 'Yes. The 2 channels allow control of 2 motors independently or in sync via scenes.' },
+      { question: 'Does it have position feedback?', answer: 'No, it sends simple Open/Close/Stop commands. For position feedback, install limit switches on your motor.' }
+    ],
+    inBox: [
+      'DC2 Motor Controller Rectangle × 1',
+      'Mounting Frame × 1',
+      'Terminal Block × 1',
+      'Hardware Kit × 1',
+      'Setup Guide × 1'
+    ],
+    warranty: '3 Years Manufacturer Warranty',
+    installationType: 'Electrician Required — 30-40 min',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home', 'IFTTT'],
+    rating: 4.6,
+    reviewCount: 521,
+    isBestseller: false,
+    isNew: false
+  },
+
+  {
+    id: 'dc2-curtain-motor-square',
+    name: 'DC2 Smart Curtain Motor (Square Switch)',
+    tagline: 'Compact Motor Controller — Same Power in Square Form',
+    category: 'curtain-motors',
+    price: '₹6,999',
+    originalPrice: '₹8,999',
+    heroImg: 'dc2Rectangle ',
+    gallery: [
+      { url: 'dc2Rectangle ', caption: 'DC2 Square Motor Controller' },
+      { url: 'dc2Rectangle ', caption: 'Installation View' }
+    ],
+    shortDesc: 'Square 2-channel motor controller with Open/Close/Stop control.',
+    longDesc: 'Same powerful features as the rectangle DC2, just in a compact 86×86mm square form factor.',
+    features: [
+      { icon: '🪟', title: '2-Channel Motor Control', description: 'Control 2 motors independently.' },
+      { icon: '⬆️', title: 'Three-Position Control', description: 'Open, Close, Stop commands.' },
+      { icon: '🔁', title: 'Dry Contact Relays', description: 'Universal motor compatibility.' },
+      { icon: '🎬', title: 'Scene Integration', description: 'Include in complex automations.' }
+    ],
+    specs: [
+      { label: 'Dimensions', value: '86 × 86 × 28mm' },
+      { label: 'Channels', value: '2 Motor' },
+      { label: 'Contact', value: '2 NO per channel' },
+      { label: 'Max Current', value: '5A' },
+      { label: 'Input Voltage', value: '180-240V AC' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Midnight Black', color: 'Midnight Black', colorCode: '#1a1a1a', price: '₹6,999', img: dc2Rectangle  },
+      { name: 'Arctic White', color: 'Arctic White', colorCode: '#f5f5f0', price: '₹6,999', img: dc2Rectangle }
+    ],
+    testimonials: [
+      { quote: 'Perfect for my apartment. The square form matches the other ACIS switches beautifully.', author: 'Ravi P.', role: 'Homeowner, Bangalore', rating: 5 }
+    ],
+    faqs: [
+      { question: 'Is this different from rectangle DC2?', answer: 'Only the form factor. All features and power are identical.' }
+    ],
+    inBox: [
+      'DC2 Motor Controller Square × 1',
+      'Mounting Frame × 1',
+      'Terminal Block × 1',
+      'Hardware Kit × 1',
+      'Setup Guide × 1'
+    ],
+    warranty: '3 Years Manufacturer Warranty',
+    installationType: 'Electrician Required — 30-40 min',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home'],
+    rating: 4.5,
+    reviewCount: 387,
+    isBestseller: false,
+    isNew: false
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // SENSORS
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  {
+    id: 'ssi-presence-sensor',
+    name: 'SSI Smart Presence Sensor',
+    tagline: 'Motion + Light + Presence Detection — Auto Lighting Control',
+    category: 'sensors',
+    badge: 'SMART AUTOMATION',
+    price: '₹3,999',
+    originalPrice: '₹5,499',
+    heroImg: ssiSensor,
+    gallery: [
+      { url: ssiSensor, caption: 'SSI Presence Sensor Mounted on Wall' },
+      { url: ssiSensor, caption: 'Motion Detection Zone Visualization' },
+      { url: ssiSensor, caption: 'Installed in Hallway' },
+      { url: ssiSensor, caption: 'App Dashboard — Real-time Status' }
+    ],
+    shortDesc: 'PIR motion sensor with integrated light sensor and presence detection triggering automatic ON/OFF or dimming scenes.',
+    longDesc: 'SSI is an intelligent presence sensor that detects both motion (via PIR sensor) and ambient light levels. When motion is detected, it automatically activates configured scenes — turning on lights at full brightness if dark, or keeping them off if the room is already well-lit. Presence detection extends the timeout: lights stay on as long as there is continued presence in the room, then gradually turn off when the room is empty. Perfect for hallways, bathrooms, bedrooms, and living rooms where you want hands-free lighting automation. The integrated light sensor prevents unnecessary lights when natural sunlight is sufficient.',
+    features: [
+      { icon: '👁️', title: 'PIR Motion Detection', description: 'Sensitive infrared sensor detects body heat and movement with adjustable sensitivity.' },
+      { icon: '💡', title: 'Ambient Light Sensor', description: 'Prevents lights from turning on if room is already well-lit by natural light.' },
+      { icon: '⏱️', title: 'Presence Hold Time', description: 'Extends timeout while presence is detected — lights stay on as long as you are in the room.' },
+      { icon: '🎬', title: 'Scene Activation', description: 'Trigger any scene when motion is detected — lights, AC, fans can all activate together.' },
+      { icon: '🔄', title: 'Two Output Modes', description: 'Pure relay output OR DimTriac dimmer output for brightness control.' },
+      { icon: '📱', title: 'App Configuration', description: 'Set detection range, light threshold, timeout, and scene activation via ACIS app.' }
+    ],
+    specs: [
+      { label: 'Dimensions', value: '86 × 86 × 28mm' },
+      { label: 'Sensor Type', value: 'PIR (Passive Infrared)' },
+      { label: 'Detection Range', value: '6m radius (adjustable)' },
+      { label: 'Detection Angle', value: '120 degrees' },
+      { label: 'Light Sensor', value: 'Ambient Light Detector (LUX)' },
+      { label: 'Output Mode 1', value: 'Relay (5A, 1000W)' },
+      { label: 'Output Mode 2', value: 'DimTriac (300W max)' },
+      { label: 'Input Voltage', value: '180-240V AC, 50-60Hz' },
+      { label: 'Response Time', value: '< 1 Second' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Pearl White', color: 'Pearl White', colorCode: '#f8f8f8', price: '₹3,999', img: ssiSensor },
+      { name: 'Graphite Black', color: 'Graphite Black', colorCode: '#2a2a2a', price: '₹3,999', img: ssiSensor }
+    ],
+    testimonials: [
+      { quote: 'The motion sensor automatically turns on lights when I enter my hallway and turns them off when I leave. No more fumbling for switches at night.', author: 'Neha R.', role: 'Homeowner, Bangalore', rating: 5 },
+      { quote: 'The light sensor is smart — it doesn\'t turn on lights during the day even when motion is detected. Perfect for energy saving.', author: 'Vikram K.', role: 'Homeowner, Hyderabad', rating: 5 }
+    ],
+    faqs: [
+      { question: 'How far away does it detect motion?', answer: 'Standard 6-meter radius with 120-degree detection angle. Sensitivity is adjustable via the ACIS app.' },
+      { question: 'Does it work in daylight?', answer: 'Yes, but the light sensor can be configured to skip activation if ambient light is sufficient. This saves energy during daytime.' },
+      { question: 'Can I adjust detection sensitivity?', answer: 'Yes. Full range adjustable via ACIS app for different room sizes and furniture layouts.' }
+    ],
+    inBox: [
+      'SSI Presence Sensor × 1',
+      'Mounting Frame × 1',
+      'Connection Terminal Block × 1',
+      'Hardware Kit × 1',
+      'Setup Guide × 1'
+    ],
+    warranty: '2 Years Manufacturer Warranty',
+    installationType: 'DIY or Electrician — 20-30 min',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home', 'Scene Automation'],
+    rating: 4.7,
+    reviewCount: 1089,
+    isBestseller: false,
+    isNew: false
+  },
+
+  {
+    id: 'dse-door-sensor',
+    name: 'DSE Smart Door Sensor',
+    tagline: 'Wireless Door/Window Sensor — Intrusion Alert + Scene Trigger',
+    category: 'sensors',
+    badge: 'SECURITY ESSENTIAL',
+    price: '₹1,999',
+    originalPrice: '₹2,999',
+    heroImg: dseSensor,
+    gallery: [
+      { url: dseSensor, caption: 'DSE Door/Window Sensor' },
+      { url: dseSensor, caption: 'Sensor Installed on Window' },
+      { url: dseSensor, caption: 'Magnet Alignment Detail' },
+      { url: dseSensor, caption: 'App Real-Time Status Update' }
+    ],
+    shortDesc: 'Wireless magnetic door/window sensor with 2-year battery life, intrusion alerts, and scene automation triggers.',
+    longDesc: 'DSE is a wireless door and window sensor that sends instant notifications whenever a door or window opens or closes. Perfect for home security monitoring — you get alerts on your phone even when you\'re at the office. The sensor can also trigger scenes: when your main door opens and the house is in "Away" mode, it triggers alarms. Battery life lasts 2 years with typical usage. The sensor pair includes a magnet that sits on the door frame and the sensor unit on the door itself — when separated, the sensor detects the open state.',
+    features: [
+      { icon: '🚪', title: 'Door/Window Detection', description: 'Detects open/closed state of doors, windows, and gates with magnetic reed switch.' },
+      { icon: '📱', title: 'Real-Time Notifications', description: 'Instant push alerts when sensor state changes — even when you\'re away from home.' },
+      { icon: '🎬', title: 'Scene Triggers', description: 'Integrate with automations — alarm on unexpected opening, lights on when door opens, etc.' },
+      { icon: '🔋', title: '2-Year Battery Life', description: 'CR2032 button battery lasts 2 years with typical daily usage.' },
+      { icon: '🔒', title: 'Security Logging', description: 'Complete history of all opens/closes with timestamps in ACIS app.' },
+      { icon: '📡', title: 'Wireless + Reliable', description: 'Mesh network ensures reliable delivery even through walls.' }
+    ],
+    specs: [
+      { label: 'Dimensions', value: '50 × 25 × 10mm' },
+      { label: 'Sensor Type', value: 'Magnetic Reed Switch' },
+      { label: 'Detection Range', value: '25mm (magnet to sensor)' },
+      { label: 'Battery Type', value: 'CR2032 Button Cell' },
+      { label: 'Battery Life', value: '2 Years (Typical Usage)' },
+      { label: 'Wireless Protocol', value: 'Mesh Network (2.4GHz)' },
+      { label: 'Response Time', value: 'Sub-1 Second' },
+      { label: 'LED Indicator', value: 'Status Confirmation Light' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Pearl White', color: 'Pearl White', colorCode: '#f8f8f8', price: '₹1,999', img: dseSensor },
+      { name: 'Graphite Black', color: 'Graphite Black', colorCode: '#2a2a2a', price: '₹1,999', img: dseSensor }
+    ],
+    testimonials: [
+      { quote: 'I get notifications when doors/windows open. Perfect for monitoring my elderly parents\' home. Peace of mind is priceless.', author: 'Anjali S.', role: 'Homeowner, Delhi', rating: 5 },
+      { quote: 'Set up an automation to turn on hallway lights when bedroom door opens at night. Love the security logging feature.', author: 'Rajesh T.', role: 'Homeowner, Pune', rating: 5 }
+    ],
+    faqs: [
+      { question: 'How far away can the sensor detect opening?', answer: 'The magnet must be within 25mm of the sensor. Standard door gap of 2-3mm is perfect for detection.' },
+      { question: 'How long does the battery actually last?', answer: 'CR2032 battery lasts approximately 2 years with typical usage. The ACIS app warns you at 20% battery.' },
+      { question: 'Can I use it on different doors?', answer: 'Yes. One CR2032 battery lasts 2 years, so you can buy multiple sensors and monitor many doors/windows.' }
+    ],
+    inBox: [
+      'DSE Door Sensor Unit × 1',
+      'Magnetic Mount × 1',
+      'CR2032 Battery × 1',
+      '3M Adhesive Sticker × 1',
+      'Mounting Bracket × 1',
+      'Setup Guide × 1'
+    ],
+    warranty: '2 Years Manufacturer Warranty',
+    installationType: 'DIY — Peel, Stick & Configure (5 min)',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home', 'Scene Automation', 'Security Scenes'],
+    rating: 4.8,
+    reviewCount: 2247,
+    isBestseller: true,
+    isNew: false
+  },
+
+  {
+    id: 'ale-integration-module',
+    name: 'ALE Integration Module',
+    tagline: 'Connect External Systems — Alarms, Doorbells, Sensors',
+    category: 'sensors',
+    price: '₹2,499',
+    originalPrice: '₹3,499',
+    heroImg: aleModule,
+    gallery: [
+      { url: aleModule, caption: 'ALE Integration Module' },
+      { url: aleModule, caption: 'Connected to Security Panel' },
+      { url: aleModule, caption: 'App Alert Configuration' }
+    ],
+    shortDesc: 'Wireless integration module connecting external systems (alarms, doorbells, panic buttons) to ACIS ecosystem.',
+    longDesc: 'ALE bridges the gap between existing security systems and the ACIS smart home platform. Connect any wired alarm system, doorbell, panic button, or external sensor to ALE, and it integrates seamlessly into ACIS automations. When your burglar alarm triggers, ALE sends a notification to your phone and can trigger scenes — turn on all lights, lock doors, and record video simultaneously. Perfect for retrofitting existing security infrastructure into a smart home system.',
+    features: [
+      { icon: '🔌', title: 'External System Integration', description: 'Connect existing alarm systems, doorbells, and sensors via 12V-24V input.' },
+      { icon: '📱', title: 'Instant Notifications', description: 'Get alerts on your phone whenever connected systems activate.' },
+      { icon: '🎬', title: 'Scene Triggering', description: 'Alarm activation can trigger complex scenes — lights, locks, cameras, notifications.' },
+      { icon: '🔄', title: 'Dry Contact Input', description: 'Standard dry contact relay input — works with virtually all external systems.' },
+      { icon: '⚙️', title: 'Flexible Configuration', description: 'Set trigger modes: active high or active low based on your system.' },
+      { icon: '📊', title: 'Activity Logging', description: 'Complete history of all external system activations in ACIS app.' }
+    ],
+    specs: [
+      { label: 'Dimensions', value: '52 × 20 × 5mm' },
+      { label: 'Input Type', value: 'Dry Contact (1 Input)' },
+      { label: 'Input Voltage', value: '12V-24V DC' },
+      { label: 'Current Draw', value: '< 1mA (Standby)' },
+      { label: 'Response Time', value: '< 500ms' },
+      { label: 'LED Indicator', value: 'Status Light' },
+      { label: 'Wireless Protocol', value: 'Mesh Network 2.4GHz' },
+      { label: 'Power Supply', value: '12V DC (External)' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Standard Module', color: 'White', colorCode: '#ffffff', price: '₹2,499', img: aleModule }
+    ],
+    testimonials: [
+      { quote: 'Integrated my existing alarm system with ACIS. Now alarms trigger lights and send phone notifications. Perfect retrofit.', author: 'Deepak P.', role: 'Homeowner, Mumbai', rating: 5 },
+      { quote: 'The ALE module is a lifesaver for upgrading old systems to smart home compatibility without replacement.', author: 'Security Installer', role: 'Professional Installer, Pan-India', rating: 5 }
+    ],
+    faqs: [
+      { question: 'What systems can I connect?', answer: 'Any system with a dry contact relay output: burglar alarms, doorbell circuits, panic buttons, external PIR sensors, water leak detectors, etc.' },
+      { question: 'Can I trigger multiple scenes from one input?', answer: 'Yes. Configure complex automations — when alarm triggers, activate multiple scenes in sequence.' },
+      { question: 'Is there a maximum number of ALE modules?', answer: 'No limit. Connect multiple ALE modules to monitor different systems independently.' }
+    ],
+    inBox: [
+      'ALE Integration Module × 1',
+      '12V Power Supply (Optional) × 1',
+      'Terminal Block × 1',
+      'Setup Guide × 1'
+    ],
+    warranty: '2 Years Manufacturer Warranty',
+    installationType: 'Electrician Recommended — 15-20 min',
+    compatibility: ['ACIS Hub', 'External Alarm Systems', 'Doorbells', 'Security Panels'],
+    rating: 4.4,
+    reviewCount: 445,
+    isBestseller: false,
+    isNew: false
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // IR CONTROLLERS
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  {
+    id: 'ir-rau-4channel',
+    name: 'IR-RAU 4-Channel IR Controller',
+    tagline: 'Universal AC/TV/DVD Remote — Learn & Control Any IR Device',
+    category: 'ir-controllers',
+    badge: 'UNIVERSAL CONTROL',
+    price: '₹4,499',
+    originalPrice: '₹5,999',
+    heroImg: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80',
+    gallery: [
+      { url: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80', caption: 'IR-RAU 4-Channel Controller' },
+      { url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80', caption: '7-Segment LED Display' },
+      { url: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&q=80', caption: 'Connected to AC and TV' },
+      { url: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&q=80', caption: 'App — Learned Commands List' }
+    ],
+    shortDesc: '4-channel infrared controller with 7-segment display, command learning from any remote, and remote IR head extension.',
+    longDesc: 'IR-RAU is a universal infrared controller that replaces or supplements multiple remote controls. It can learn and store up to 30 commands per channel from any IR device — air conditioners, televisions, DVD players, projectors, etc. The 7-segment LED display shows the current channel selection. The IR transmitter head is on a 10-meter extension cable, allowing you to hide the controller in a cabinet while blasting IR signals across the room. Features 3 physical buttons plus wireless app control for command selection.',
+    features: [
+      { icon: '📚', title: 'Command Learning', description: 'Learn and store up to 30 IR commands per channel (120 total) from any remote.' },
+      { icon: '📺', title: '4 Independent Channels', description: 'Control 4 different IR devices — AC, TV, DVD, Projector, etc.' },
+      { icon: '📟', title: '7-Segment LED Display', description: 'Shows current channel and command status on bright LED.' },
+      { icon: '📡', title: '10m IR Head Extension', description: 'Separate IR transmitter head on 10-meter cable for flexible mounting.' },
+      { icon: '🎯', title: '38kHz IR Frequency', description: 'Universal compatibility with 99% of IR-enabled devices worldwide.' },
+      { icon: '⚙️', title: 'Command Duration Flexible', description: 'Supports commands from 50 bytes to 1500 bytes in length.' }
+    ],
+    specs: [
+      { label: 'Dimensions', value: '85 × 50 × 21mm (Controller Unit)' },
+      { label: 'IR Head Length', value: '10 Meters (Extendable)' },
+      { label: 'Channels', value: '4 Independent Channels' },
+      { label: 'Commands per Channel', value: '30 Commands (120 Total)' },
+      { label: 'IR Frequency', value: '38 kHz' },
+      { label: 'IR Transmission Angle', value: '18 Degrees' },
+      { label: 'Display', value: '7-Segment LED' },
+      { label: 'Control Buttons', value: '3 Physical Buttons' },
+      { label: 'Power Input', value: '12V-24V DC, 1A' },
+      { label: 'Wireless', value: 'Mesh Network 2.4GHz' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Standard Module', color: 'White/Black', colorCode: '#ffffff', price: '₹4,499', img: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80' }
+    ],
+    testimonials: [
+      { quote: 'Finally, one remote for my AC and TV. Learned commands from both remotes and now control both from ACIS app.', author: 'Ramesh K.', role: 'Homeowner, Chennai', rating: 5 },
+      { quote: 'The 10-meter IR head extension is genius. Hidden my controller in a cabinet while IR signals reach across the room perfectly.', author: 'Arjun S.', role: 'Homeowner, Pune', rating: 5 }
+    ],
+    faqs: [
+      { question: 'How do I learn commands from my remote?', answer: 'Press the learning button on IR-RAU, press the command on your original remote. IR-RAU learns and stores it automatically.' },
+      { question: 'Can I control multiple ACs with different models?', answer: 'Yes. Learn commands from each AC remote onto separate channels. Each channel stores up to 30 different commands.' },
+      { question: 'What if the IR head fails?', answer: 'Replacement IR head extension is available separately. Plug and play replacement — no reconfiguration needed.' }
+    ],
+    inBox: [
+      'IR-RAU Controller Unit × 1',
+      'IR Transmitter Head (10m cable) × 1',
+      '12V-24V Power Adapter × 1',
+      '3 Physical Buttons × 1',
+      'Learning Guide × 1',
+      'Command Log Stickers × 1'
+    ],
+    warranty: '2 Years Manufacturer Warranty',
+    installationType: 'DIY — Plug & Learn (5-10 min setup)',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home', 'Any IR Device'],
+    rating: 4.6,
+    reviewCount: 1156,
+    isBestseller: false,
+    isNew: false
+  },
+
+  {
+    id: 'ir-circular-wireless',
+    name: 'IR-W Circular Wireless IR Controller',
+    tagline: '360° IR Broadcasting — Zero Dead Zones',
+    category: 'ir-controllers',
+    price: '₹5,999',
+    originalPrice: '₹7,999',
+    heroImg: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&q=80',
+    gallery: [
+      { url: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&q=80', caption: 'IR-W Circular Controller' },
+      { url: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80', caption: '360 Degree IR Coverage' },
+      { url: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&q=80', caption: 'Ceiling Mount Installation' },
+      { url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80', caption: 'Smart Home Integration' }
+    ],
+    shortDesc: '4-channel circular IR controller with 360° transmission, ceiling mount option, and ceilingwhite/black color options.',
+    longDesc: 'IR-W is the premium circular IR controller designed for rooms where IR devices are positioned in multiple directions. The 360-degree transmitter design eliminates dead zones — whether your AC is on the left, TV on the right, and projector facing the wall, IR-W reaches them all. Perfect for large living rooms and home theaters. At just 75mm diameter × 25mm height, it can be mounted on a wall corner or ceiling for subtle integration into your smart home setup.',
+    features: [
+      { icon: '🔄', title: '360° IR Broadcasting', description: 'Transmit IR signals in all directions — no need to point at specific device.' },
+      { icon: '📺', title: '4 Independent Channels', description: 'Control 4 different IR-enabled devices simultaneously.' },
+      { icon: '📚', title: '30 Commands per Channel', description: 'Learn and store 30 commands per channel (120 total).' },
+      { icon: '📍', title: 'Flexible Mounting', description: 'Wall mount or ceiling mount — compact 75mm diameter design.' },
+      { icon: '🎙️', title: 'Voice Control Ready', description: 'Full integration with Alexa and Google Home for voice-activated device control.' },
+      { icon: '📡', title: 'Wireless + Reliable', description: 'Mesh network + Bluetooth ensures reliable delivery.' }
+    ],
+    specs: [
+      { label: 'Dimensions', value: '75mm Diameter × 25mm Height' },
+      { label: 'Channels', value: '4 Independent' },
+      { label: 'Commands per Channel', value: '30 (120 Total)' },
+      { label: 'IR Frequency', value: '38 kHz' },
+      { label: 'Transmission Angle', value: '360 Degrees' },
+      { label: 'Power Input', value: '5V DC, 1A (USB-C)' },
+      { label: 'Wireless', value: 'Mesh Network + Bluetooth 5.0' },
+      { label: 'LED Indicator', value: 'Status Light' },
+      { label: 'Speaker', value: 'Built-in Audio Feedback' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Pearl White', color: 'Pearl White', colorCode: '#f8f8f8', price: '₹5,999', img: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&q=80' },
+      { name: 'Graphite Black', color: 'Graphite Black', colorCode: '#2a2a2a', price: '₹5,999', img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80' }
+    ],
+    testimonials: [
+      { quote: 'The 360° coverage is amazing. I can control my TV, AC, and projector from anywhere in the room. No positioning issues.', author: 'Sanjay M.', role: 'Homeowner, Mumbai', rating: 5 },
+      { quote: 'Mounted on my ceiling — perfectly discreet and covers the entire home theater. Love this product.', author: 'Vishal K.', role: 'Homeowner, Hyderabad', rating: 5 }
+    ],
+    faqs: [
+      { question: 'Can it control 4 devices simultaneously?', answer: 'Yes. Each channel controls one device. You can send commands to all 4 devices in sequence via scenes.' },
+      { question: 'What is the maximum range?', answer: 'Standard IR line-of-sight range is 10 meters. The 360° design ensures coverage in all directions without repositioning.' }
+    ],
+    inBox: [
+      'IR-W Circular Controller × 1',
+      'Wall Mount Bracket × 1',
+      'Ceiling Mount Kit × 1',
+      'USB-C Power Cable (1.5m) × 1',
+      '5V USB Power Adapter × 1',
+      'Setup Guide × 1'
+    ],
+    warranty: '2 Years Manufacturer Warranty',
+    installationType: 'DIY — Mount & Configure (10 min)',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home', 'Any IR Device'],
+    rating: 4.7,
+    reviewCount: 834,
+    isBestseller: false,
+    isNew: false
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // SMART LIGHTING
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  {
+    id: 'lumina-rgb-strip-5m',
+    name: 'Lumina RGB LED Strip (5M)',
+    tagline: '16 Million Colors — Music Sync, Tunable White, Cut Every 10cm',
+    category: 'smart-lighting',
+    badge: 'BESTSELLER',
+    price: '₹3,499',
+    originalPrice: '₹4,999',
+    heroImg: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&q=80',
+    gallery: [
+      { url: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&q=80', caption: 'Lumina RGB Strip — Color Gradient' },
+      { url: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80', caption: 'Under-Cabinet Kitchen Installation' },
+      { url: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&q=80', caption: 'Bedroom Cove Ambient Lighting' },
+      { url: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80', caption: 'TV Backlight Setup' },
+      { url: 'https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?w=800&q=80', caption: 'Music Sync Party Mode' }
+    ],
+    shortDesc: '5-meter RGBWW LED strip with 300+ LEDs, music sync, tunable white (2700K-6500K), and cuttable segments.',
+    longDesc: 'Lumina RGB LED Strip is the most versatile smart lighting solution for homes. At 5 meters with 300 LEDs (60 per meter), it delivers vibrant, uniform color illumination with zero hot spots. The RGBWW chipset combines full RGB spectrum (16 million colors) with independent warm-white and cool-white channels — perfect for both party mood lighting and natural task lighting. Music sync mode uses the built-in microphone to pulse colors in real-time with your music. The tunable white feature automatically shifts from warm (2700K) to cool (6500K) throughout the day to support healthy sleep-wake cycles. Cut every 10cm to fit any space — under cabinets, behind TVs, in coves, or along bookshelves.',
+    features: [
+      { icon: '🌈', title: '16 Million Colors', description: 'Full RGB spectrum plus independent warm and cool white channels for every mood.' },
+      { icon: '🎵', title: 'Music Sync Mode', description: 'Built-in microphone syncs colors and brightness to music beat in real-time.' },
+      { icon: '✂️', title: 'Cut Every 10cm', description: 'Flexible cutting points every 10cm let you customize length for any application.' },
+      { icon: '🌡️', title: 'Tunable White', description: 'Automatic or manual shift from warm (2700K) to cool (6500K) white for circadian rhythm support.' },
+      { icon: '💧', title: 'IP65 Water Resistant', description: 'Silicone coating makes it safe for bathroom, kitchen, and covered outdoor use.' },
+      { icon: '📱', title: 'App + Voice + Remote', description: 'Full control via ACIS app, Alexa, Google Home, or included 44-button IR remote.' }
+    ],
+    specs: [
+      { label: 'Length', value: '5 Meters (Cuttable every 10cm)' },
+      { label: 'LED Type', value: 'RGBWW 5050 SMD' },
+      { label: 'LEDs per Meter', value: '60 LEDs/m (300 total)' },
+      { label: 'Color Range', value: '16 Million Colors + Tunable White (2700K-6500K)' },
+      { label: 'Total Power', value: '72W (14.4W per meter)' },
+      { label: 'IP Rating', value: 'IP65 — Water Resistant' },
+      { label: 'Power Supply', value: '24V DC with Adapter (Included)' },
+      { label: 'Wireless', value: 'Wi-Fi 2.4GHz + Bluetooth 5.0' },
+      { label: 'LED Lifespan', value: '50,000+ Hours' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Standard 5M', color: 'Standard', colorCode: '#ffffff', price: '₹3,499', img: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&q=80' },
+      { name: 'Extended 10M', color: 'Extended', colorCode: '#e0e0e0', price: '₹6,499', img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80' },
+      { name: 'Pro+ Neon Flex', color: 'Neon Flex', colorCode: '#ff6ec7', price: '₹5,999', img: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&q=80' }
+    ],
+    testimonials: [
+      { quote: 'Installed behind my TV and under kitchen cabinets. The tunable white feature means I use it for cooking light during the day and mood lighting at night.', author: 'Sneha R.', role: 'Home Chef, Bengaluru', rating: 5 },
+      { quote: 'Music sync at house parties is insane. Guests always ask what brand it is. Worth every rupee.', author: 'Karan T.', role: 'DJ & Homeowner, Goa', rating: 5 },
+      { quote: 'The ability to cut every 10cm was exactly what I needed. Fitted perfectly around my custom shelving.', author: 'Priya S.', role: 'Interior Designer, Mumbai', rating: 5 }
+    ],
+    faqs: [
+      { question: 'Can I extend the strip beyond 5M?', answer: 'Yes, with the Lumina Connector Kit (sold separately) supporting up to 15M total.' },
+      { question: 'Does it get hot during use?', answer: 'Minimal heat. The 24V DC design keeps it cool even after hours of use.' },
+      { question: 'Can I use it outdoors?', answer: 'IP65 rating handles covered outdoor areas. For fully exposed outdoor use, try Lumina Outdoor Pro (IP67).' },
+      { question: 'How do I cut it?', answer: 'Cut along the marked lines every 10cm. Each segment works independently when connected to power.' }
+    ],
+    inBox: [
+      'Lumina RGB Strip (5M) × 1',
+      '24V DC Power Adapter × 1',
+      'Wi-Fi Controller Unit × 1',
+      'IR Remote (44 buttons) × 1',
+      '3M Adhesive Backing (Pre-applied)',
+      'Mounting Clips × 10',
+      'Connector Pieces × 2',
+      'Setup Guide × 1'
+    ],
+    warranty: '2 Years Manufacturer Warranty',
+    installationType: 'DIY — Peel, Stick & Plug',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home', 'Apple HomeKit'],
+    rating: 4.7,
+    reviewCount: 1623,
+    isBestseller: true,
+    isNew: false
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // CLIMATE CONTROL
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  {
+    id: 'thermocore-ai-smart',
+    name: 'ThermoCore AI Smart Thermostat',
+    tagline: 'AI-Powered AC Control — 35% Energy Savings + Sleep Optimization',
+    category: 'climate-control',
+    badge: 'EDITOR\'S PICK',
+    price: '₹6,999',
+    originalPrice: '₹8,999',
+    heroImg: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80',
+    gallery: [
+      { url: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80', caption: 'ThermoCore AI — Wall Mounted' },
+      { url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80', caption: 'Temperature and Humidity Display' },
+      { url: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80', caption: 'Bedroom Sleep Comfort Mode' },
+      { url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80', caption: 'App Energy Analytics Dashboard' },
+      { url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80', caption: 'Multi-Zone Temperature Map' }
+    ],
+    shortDesc: 'AI thermostat with 2-week learning phase, occupancy detection, sleep optimization, and universal IR control for 99% of AC models.',
+    longDesc: 'ThermoCore AI isn\'t just a thermostat — it\'s your air conditioner\'s intelligent brain upgrade. Using onboard machine learning, it studies your daily patterns for 2 weeks: when you wake, when you leave for work, when you sleep, and how room temperature changes. After the learning phase, it automatically pre-cools rooms before you arrive, maintains optimal sleep temperatures (gradually warming from 22°C to 26°C by morning), and turns off the AC when the room is empty (verified by its built-in occupancy sensor). Compatible with 99% of Indian split and window ACs using universal IR blasting. Users report 25-35% reduction in monthly electricity bills — ThermoCore typically pays for itself in 3-4 months.',
+    features: [
+      { icon: '🧠', title: 'AI Schedule Learning', description: '2-week learning phase maps your daily patterns. After that, auto-adjusts temperature before you even think about it.' },
+      { icon: '📊', title: 'Energy Analytics', description: 'Daily, weekly, and monthly energy usage reports with savings calculations and optimization tips.' },
+      { icon: '👤', title: 'Occupancy Detection', description: 'Built-in PIR sensor detects room occupancy and auto-adjusts or shuts off AC when nobody is present.' },
+      { icon: '🌙', title: 'Sleep Comfort Algorithm', description: 'Gradually warms room from 22°C to 26°C overnight, matching your body\'s natural temperature curve for deeper sleep.' },
+      { icon: '📡', title: 'Universal IR Blaster', description: 'Compatible with 99% of Indian AC brands — Daikin, Voltas, Blue Star, LG, Samsung, Hitachi, and 200+ more.' },
+      { icon: '🌐', title: 'Multi-Room Sync', description: 'Link multiple ThermoCore units to create house-wide climate zones with independent targets.' }
+    ],
+    specs: [
+      { label: 'Display', value: '2.4" LCD — Temperature + Humidity' },
+      { label: 'Sensors', value: 'Temperature, Humidity, PIR, Ambient Light' },
+      { label: 'IR Range', value: '10m, 180° Coverage' },
+      { label: 'AC Compatibility', value: '200+ Brands, 10,000+ Models' },
+      { label: 'Wireless', value: 'Wi-Fi 2.4GHz' },
+      { label: 'Power', value: 'USB-C (5V/1A) — Adapter Included' },
+      { label: 'Dimensions', value: '86 × 86 × 14mm' },
+      { label: 'Weight', value: '120g' },
+      { label: 'Processor', value: 'EdgeML Chip — On-Device Learning' },
+      { label: 'Certifications', value: 'BIS, CE, FCC' }
+    ],
+    variants: [
+      { name: 'Matte White', color: 'Matte White', colorCode: '#f0f0f0', price: '₹6,999', img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80' },
+      { name: 'Matte Black', color: 'Matte Black', colorCode: '#2a2a2a', price: '₹6,999', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80' }
+    ],
+    testimonials: [
+      { quote: 'My electricity bill dropped from ₹4,200 to ₹2,800 in the first month. ThermoCore paid for itself in 3 months. Insane ROI.', author: 'Rajesh P.', role: 'IT Professional, Hyderabad', rating: 5 },
+      { quote: 'The sleep mode is brilliant. I used to wake up freezing at 4 AM. Now the room is always perfect temperature. My wife loves it even more.', author: 'Amit D.', role: 'Doctor, Chennai', rating: 5 },
+      { quote: 'Works perfectly with my old Voltas window AC. I thought I\'d need a new AC for smart features. ThermoCore proved me wrong.', author: 'Sunita K.', role: 'Teacher, Jaipur', rating: 4 }
+    ],
+    faqs: [
+      { question: 'Does it work with my AC brand?', answer: 'ThermoCore supports 200+ AC brands including Daikin, LG, Samsung, Voltas, Blue Star, Hitachi, Carrier, Panasonic, and more. Check compatibility list in app.' },
+      { question: 'Does the AI learning work offline?', answer: 'Yes. The EdgeML chip runs entirely on-device. Your data never leaves your home. AI works even without internet.' },
+      { question: 'Can I override the AI schedule?', answer: 'Absolutely. One tap in the app or voice command overrides any automated schedule instantly. The AI learns from your overrides.' },
+      { question: 'How is it powered?', answer: 'USB-C with included adapter. Can also be powered from USB port on your TV or router for cable-free mounting.' }
+    ],
+    inBox: [
+      'ThermoCore AI Thermostat × 1',
+      'Wall Mount Bracket × 1',
+      'USB-C Cable (2m) × 1',
+      'USB-C Power Adapter × 1',
+      '3M Mounting Sticker × 1',
+      'Quick Start Guide × 1'
+    ],
+    warranty: '2 Years Manufacturer Warranty + 1 Year Extended (on registration)',
+    installationType: 'DIY — Mount, Plug & Configure via App',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home', 'Apple HomeKit', 'IFTTT'],
+    rating: 4.8,
+    reviewCount: 1891,
+    isBestseller: false,
+    isNew: false
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // SECURITY
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  {
+    id: 'sentinel-smart-lock-pro',
+    name: 'Sentinel Smart Lock Pro',
+    tagline: 'Five Ways to Unlock — Zero Ways to Break In',
+    category: 'security',
+    badge: 'TOP RATED',
+    price: '₹14,999',
+    originalPrice: '₹18,999',
+    heroImg: sentinelLock,
+    gallery: [
+      { url: sentinelLock, caption: 'Sentinel Pro — Main Door Installation' },
+      { url: sentinelLock, caption: 'Fingerprint Scanner Detail' },
+      { url: sentinelLock, caption: 'Numeric Keypad + RFID' },
+      { url: sentinelLock, caption: 'Interior Thumb-Turn Mechanism' },
+      { url: sentinelLock, caption: 'App — Access Log & Guest Codes' }
+    ],
+    shortDesc: '5-in-1 smart door lock: fingerprint, PIN, RFID card, app remote, mechanical key backup. Grade-A stainless steel with anti-tamper alarm.',
+    longDesc: 'Sentinel Smart Lock Pro is built for Indian main doors — thick, heavy, and non-negotiable on security. The 5-mode access system ensures you\'re never locked out: semiconductor fingerprint scanner (0.3s unlock), 6-digit PIN pad, RFIC card/tag, Homeasy app remote unlock, and hidden mechanical key slot for emergencies. Grade-A 304 stainless steel body withstands forced entry attempts and triggers 100dB alarm on tamper detection. Supports 100 fingerprints and 50 guest PINs with auto-expiry. Every unlock logged with timestamp in ACIS app — you always know who entered and when.',
+    features: [
+      { icon: '🖐️', title: '5-Mode Access System', description: 'Fingerprint, PIN, RFID, App Remote, and mechanical key. Five ways in, zero ways for intruders.' },
+      { icon: '⚡', title: '0.3s Fingerprint Unlock', description: 'Semiconductor fingerprint sensor with 360° recognition — works even with wet or dirty fingers.' },
+      { icon: '🚨', title: 'Anti-Tamper Alarm', description: '100dB siren triggers on forced entry attempt, wrong password (5 tries), or physical tampering.' },
+      { icon: '👥', title: 'Guest PIN Auto-Expiry', description: 'Create temporary PINs for guests, maids, delivery agents with automatic expiry after set hours.' },
+      { icon: '📋', title: 'Full Access Log', description: 'Every unlock logged with timestamp, method, and user ID. 90-day history viewable in app.' },
+      { icon: '🔋', title: '12-Month Battery', description: '4× AA batteries last 12 months. Low battery warning at 20%. Emergency USB-C power on doorstep.' }
+    ],
+    specs: [
+      { label: 'Body Material', value: 'Grade-A 304 Stainless Steel' },
+      { label: 'Fingerprint Capacity', value: '100 Fingerprints' },
+      { label: 'PIN Capacity', value: '50 PINs (Including Guest Codes)' },
+      { label: 'RFID Cards', value: '50 Cards/Tags' },
+      { label: 'Unlock Speed', value: '0.3 Seconds (Fingerprint)' },
+      { label: 'Battery', value: '4× AA — 12 Month Life' },
+      { label: 'Emergency Power', value: 'USB-C External Port' },
+      { label: 'Wireless', value: 'Wi-Fi + Bluetooth 5.0' },
+      { label: 'Door Compatibility', value: '35-70mm Thick Doors' },
+      { label: 'Certifications', value: 'BIS, ANSI Grade 3, CE' }
+    ],
+    variants: [
+      { name: 'Graphite Black', color: 'Graphite Black', colorCode: '#2d2d2d', price: '₹14,999', img: sentinelLock },
+      { name: 'Brushed Silver', color: 'Brushed Silver', colorCode: '#c0c0c0', price: '₹14,999', img: sentinelLock },
+      { name: 'Royal Bronze', color: 'Royal Bronze', colorCode: '#8b6914', price: '₹16,999', img: sentinelLock }
+    ],
+    testimonials: [
+      { quote: 'Best investment for our family\'s safety. Guest PIN feature is perfect for maid and cook — auto-expires every evening. No more spare key anxiety.', author: 'Meera J.', role: 'Homeowner, Noida', rating: 5 },
+      { quote: 'The build quality is tank-like. My carpenter said it\'s the heaviest, most solid smart lock he\'s ever installed. That\'s reassuring.', author: 'Vikrant S.', role: 'Security Consultant, Mumbai', rating: 5 }
+    ],
+    faqs: [
+      { question: 'What if all batteries die?', answer: 'External USB-C port on bottom allows emergency power from any power bank. Mechanical key also works independently.' },
+      { question: 'Does it fit Indian doors?', answer: 'Yes. Supports 35-70mm thickness covering 95% of Indian residential main doors.' },
+      { question: 'Can I unlock remotely for delivery agents?', answer: 'Yes. ACIS app allows one-time remote unlock with video doorbell confirmation (doorbell sold separately).' }
+    ],
+    inBox: [
+      'Sentinel Smart Lock Pro (Exterior + Interior) × 1',
+      'Mortise Lock Body × 1',
+      'Strike Plate × 1',
+      'RFID Cards × 3',
+      'Mechanical Keys × 2',
+      'AA Batteries × 4',
+      'Installation Template × 1',
+      'Hardware Kit × 1'
+    ],
+    warranty: '3 Years Manufacturer Warranty',
+    installationType: 'Professional Installation Recommended — 60-90 min',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home', 'Video Doorbell Integration'],
+    rating: 4.9,
+    reviewCount: 3201,
+    isBestseller: true,
+    isNew: false
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // VIDEO DOORBELLS (NEW CATEGORY)
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  {
+    id: 'doorguard-hd-video-bell',
+    name: 'DoorGuard HD Video Doorbell',
+    tagline: '4K Video + Motion Detection — See Who\'s at Your Door Anywhere',
+    category: 'video-doorbells',
+    badge: 'NEW LAUNCH',
+    price: '₹8,999',
+    originalPrice: '₹11,999',
+    heroImg: doorGuard,
+    gallery: [
+      { url: doorGuard, caption: 'DoorGuard HD Video Doorbell' },
+      { url: doorGuard, caption: '4K Video Preview' },
+      { url: doorGuard, caption: 'Night Vision Mode' },
+      { url: doorGuard, caption: 'App — Live Feed View' },
+      { url: doorGuard, caption: 'Two-Way Audio Conversation' }
+    ],
+    shortDesc: '4K UHD video doorbell with motion detection, night vision, two-way audio, and cloud recording.',
+    longDesc: 'DoorGuard is a premium video doorbell that puts you in control of your front door — even when you\'re thousands of miles away. The 4K UHD camera captures crystal-clear video of anyone at your door. Advanced motion detection sends instant notifications to your phone with a snapshot. The night vision mode (infrared) ensures you can see visitors even in complete darkness. Two-way audio lets you talk to delivery agents, guests, or potential intruders in real-time. Video recordings are encrypted and stored in the cloud (30-day free plan) — you can always review who visited and when.',
+    features: [
+      { icon: '📹', title: '4K UHD Video', description: 'Crystal-clear 4K video capture with wide 180° field of view.' },
+      { icon: '🌙', title: 'Night Vision IR', description: 'Infrared LED illumination for perfect 24/7 visibility even in darkness.' },
+      { icon: '📱', title: 'Real-Time Alerts', description: 'Instant push notifications with thumbnail on motion detection.' },
+      { icon: '🎤', title: 'Two-Way Audio', description: 'Built-in microphone and speaker for real-time conversations.' },
+      { icon: '☁️', title: 'Cloud Recording', description: '30-day cloud storage (free), 90-day paid plans available.' },
+      { icon: '🔐', title: 'End-to-End Encryption', description: 'Military-grade AES encryption for all video and audio streams.' }
+    ],
+    specs: [
+      { label: 'Video Resolution', value: '4K UHD (2160p)' },
+      { label: 'Field of View', value: '180 Degrees' },
+      { label: 'Night Vision', value: 'Infrared LED Array' },
+      { label: 'Motion Detection', value: 'AI-Powered, Adjustable Zones' },
+      { label: 'Audio', value: 'Dual Microphone + Speaker' },
+      { label: 'Cloud Storage', value: '30 Days Free + Paid Plans' },
+      { label: 'Power Supply', value: '12V DC Transformer (Included)' },
+      { label: 'Wireless', value: 'Wi-Fi 2.4GHz/5GHz' },
+      { label: 'Dimensions', value: '52 × 82 × 31mm' },
+      { label: 'Certifications', value: 'BIS, CE, FCC' }
+    ],
+    variants: [
+      { name: 'Brushed Silver', color: 'Brushed Silver', colorCode: '#c0c0c0', price: '₹8,999', img: './assets/DoorGuard HD Video Doorbell.png' },
+      { name: 'Matte Black', color: 'Matte Black', colorCode: '#2a2a2a', price: '₹8,999', img: './assets/DoorGuard HD Video Doorbell.png' }
+    ],
+    testimonials: [
+      { quote: 'Perfect for monitoring my front door while I\'m at work. I can see delivery agents and tell them exactly where to leave packages.', author: 'Rohit P.', role: 'Homeowner, Mumbai', rating: 5 },
+      { quote: 'The 4K video quality is amazing. I can identify faces clearly. The night vision is also excellent. Great security addition.', author: 'Anjali M.', role: 'Homeowner, Delhi', rating: 5 }
+    ],
+    faqs: [
+      { question: 'Does it work in extreme cold or heat?', answer: 'Yes. Rated for -10°C to +50°C operation. The housing is weather-sealed IP65.' },
+      { question: 'Can I integrate with door lock?', answer: 'Yes. Pair with Sentinel Smart Lock to unlock the door for verified guests via the app.' },
+      { question: 'How much data does video use?', answer: 'Streaming uses approximately 2-3 Mbps for 4K video. Cloud storage depends on plan (30 days free included).' }
+    ],
+    inBox: [
+      'DoorGuard HD Doorbell × 1',
+      '12V DC Power Transformer × 1',
+      'Mounting Hardware × 1',
+      'Waterproof Connector × 1',
+      'Installation Guide × 1',
+      '30-Day Cloud Storage (Free) × 1'
+    ],
+    warranty: '2 Years Manufacturer Warranty',
+    installationType: 'Electrician Recommended — 45-60 min',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home', 'Sentinel Smart Lock'],
+    rating: 4.7,
+    reviewCount: 876,
+    isBestseller: false,
+    isNew: true
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // HUBS
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  {
+    id: 'bsp-control-panel',
+    name: 'BSP Integrated Smart Panel',
+    tagline: 'All-in-One Control — 6 Lights + IR + Dimmers + Scenes',
+    category: 'hubs',
+    badge: 'CORE DEVICE',
+    price: '₹7,499',
+    originalPrice: '₹9,999',
+    heroImg: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+    gallery: [
+      { url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80', caption: 'BSP Integrated Control Panel' },
+      { url: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80', caption: 'OLED Display with Status' },
+      { url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80', caption: 'Touch Button Layout' },
+      { url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80', caption: 'Mounted in Living Room' }
+    ],
+    shortDesc: 'Integrated control panel with 6 ON/OFF channels, 1 IR control, 1 motor control, 2 Dimmer channels, and scene presets.',
+    longDesc: 'BSP is an all-in-one control solution designed for comprehensive room automation. From a single elegant panel, you can control: 6 independent light circuits (500W each), 1 IR device (AC/TV), 1 motorized curtain/blind, and 2 dimmer channels for mood lighting — all coordinated through an integrated control system. The 0.96" OLED display shows device status, temperature, date/time, and scene names. 14 capacitive touch buttons provide direct access to all functions plus scene presets. Perfect for replacing multiple separate switches with one integrated solution.',
+    features: [
+      { icon: '💡', title: '6 Light Channels', description: 'Control up to 6 independent lighting circuits at 500W each.' },
+      { icon: '📺', title: '1 IR Control', description: 'Built-in infrared controller for AC, TV, DVD, and other IR devices.' },
+      { icon: '🪟', title: '1 Motor Control', description: 'Direct motor control for curtains and motorized blinds.' },
+      { icon: '✨', title: '2 Dimmer Channels', description: 'Smooth brightness adjustment (0-10VDC output).' },
+      { icon: '🎬', title: '2 Scene Presets', description: 'Quick-access buttons for pre-configured automations.' },
+      { icon: '📟', title: 'OLED Display', description: '0.96" display showing real-time status and scene names.' }
+    ],
+    specs: [
+      { label: 'Dimensions', value: '171 × 86 × 7.3mm' },
+      { label: 'Light Channels', value: '6 ON/OFF Channels (500W each)' },
+      { label: 'IR Control', value: '1 Channel' },
+      { label: 'Motor Control', value: '1 Channel (Dry Contact)' },
+      { label: 'Dimmer Output', value: '2 Channels (0-10VDC)' },
+      { label: 'Touch Buttons', value: '14 Capacitive' },
+      { label: 'Display', value: 'OLED 0.96 inch' },
+      { label: 'Input Voltage', value: '180-240V AC, 50-60Hz' },
+      { label: 'Wireless', value: 'Mesh Network 2.4GHz' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Arctic White', color: 'Arctic White', colorCode: '#f5f5f0', price: '₹7,499', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80' },
+      { name: 'Midnight Black', color: 'Midnight Black', colorCode: '#1a1a1a', price: '₹7,499', img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80' }
+    ],
+    testimonials: [
+      { quote: 'One panel replaces 4 separate switch boards in my living room. The integrated design looks premium and functions flawlessly.', author: 'Deepak M.', role: 'Architect, Pune', rating: 5 },
+      { quote: 'The combination of lights, dimmer, IR, and motor control is perfect for complete room automation. Excellent engineering.', author: 'Vikram K.', role: 'Homeowner, Bengaluru', rating: 5 }
+    ],
+    faqs: [
+      { question: 'Is this a hub or just a panel?', answer: 'It\'s a control panel. It connects to an ACIS Hub for full automation and app control.' },
+      { question: 'Can I use BSP without a hub?', answer: 'Yes. Local wireless control works without a hub. But for app access and advanced scenes, a hub is needed.' }
+    ],
+    inBox: [
+      'BSP Control Panel × 1',
+      'Mounting Frame × 1',
+      'Terminal Block × 1',
+      'Hardware Kit × 1',
+      'Setup Guide × 1'
+    ],
+    warranty: '3 Years Manufacturer Warranty',
+    installationType: 'Electrician Required — 45-60 min',
+    compatibility: ['ACIS Hub', 'Amazon Alexa', 'Google Home'],
+    rating: 4.6,
+    reviewCount: 567,
+    isBestseller: false,
+    isNew: false
+  },
+
+  {
+    id: 'mce-central-hub',
+    name: 'MCE Central Control Hub',
+    tagline: 'Smart Home Brain — Connect 50+ Devices, Run Offline Automations',
+    category: 'hubs',
+    badge: 'ESSENTIAL HUB',
+    price: '₹4,999',
+    originalPrice: '₹6,999',
+    heroImg: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80',
+    gallery: [
+      { url: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80', caption: 'MCE Central Hub' },
+      { url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80', caption: 'LCD Display Panel' },
+      { url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80', caption: 'Connected Devices Dashboard' },
+      { url: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80', caption: 'Ethernet & WiFi Connections' }
+    ],
+    shortDesc: 'Central intelligence hub connecting up to 50 ACIS devices via wireless mesh network, with local automations and cloud backup.',
+    longDesc: 'MCE is the brain of your ACIS smart home ecosystem. It communicates with all your ACIS devices via the secure mesh network and coordinates automations locally (so they work even if internet goes down). The hub supports up to 50 simultaneous device connections and can manage 50 different scenes with 4 daily time slots each. Features a 16×2 LCD display showing system status and device count. Dual connectivity: Ethernet (for reliability) and Wi-Fi (for flexibility). All your automations, scenes, and schedules are backed up to the cloud, so you never lose your configuration.',
+    features: [
+      { icon: '🧠', title: 'Central Intelligence', description: 'Manages automations and scenes locally — works without internet.' },
+      { icon: '📡', title: 'Mesh Network Hub', description: 'Communicates with up to 50 ACIS devices via secure wireless mesh.' },
+      { icon: '🎬', title: '50 Scene Capacity', description: 'Create and manage 50 different scenes with up to 4 daily time slots each.' },
+      { icon: '💾', title: 'Cloud Backup', description: 'All configurations backed up to cloud — never lose your settings.' },
+      { icon: '📊', title: 'Device Dashboard', description: '16×2 LCD display shows connected devices and system status at a glance.' },
+      { icon: '🌐', title: 'Dual Connectivity', description: 'Ethernet + Wi-Fi options for maximum reliability and flexibility.' }
+    ],
+    specs: [
+      { label: 'Display', value: '16×2 LCD' },
+      { label: 'Device Capacity', value: '50 Devices' },
+      { label: 'Scene Management', value: '50 Scenes × 4 Daily Time Slots' },
+      { label: 'Processor', value: 'ARM Cortex A (32-bit)' },
+      { label: 'RAM/Storage', value: '128MB RAM / 256MB Flash' },
+      { label: 'Connectivity', value: 'Ethernet (RJ45) + Wi-Fi 2.4GHz' },
+      { label: 'Mesh Network', value: 'Supports Up to 50 Devices' },
+      { label: 'Power Supply', value: '12V DC with Adapter' },
+      { label: 'Dimensions', value: '142 × 100 × 31mm' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Standard White', color: 'White', colorCode: '#f8f8f8', price: '₹4,999', img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80' }
+    ],
+    testimonials: [
+      { quote: 'Connected 30+ ACIS devices to MCE. Everything works seamlessly. The local automation is amazing — works even without internet.', author: 'Rajesh K.', role: 'Tech Enthusiast, Bangalore', rating: 5 },
+      { quote: 'The cloud backup gives me peace of mind. All my automations are safe. Setting up scenes is straightforward via the 16×2 display.', author: 'Priya M.', role: 'Homeowner, Mumbai', rating: 5 }
+    ],
+    faqs: [
+      { question: 'Do I need internet for MCE to work?', answer: 'No. Local automations work entirely offline. Internet is only needed for remote app access and cloud backup.' },
+      { question: 'Can I connect more than 50 devices?', answer: 'MCE supports up to 50 directly. For larger systems, use multiple MCE hubs in different zones.' },
+      { question: 'What happens if power goes down?', answer: 'MCE remembers all automations and scenes. When power returns, it automatically resumes scheduled operations.' }
+    ],
+    inBox: [
+      'MCE Central Hub × 1',
+      '12V DC Power Adapter × 1',
+      'Ethernet Cable (1m) × 1',
+      'Wall Mount Bracket × 1',
+      'Setup Guide × 1'
+    ],
+    warranty: '2 Years Manufacturer Warranty',
+    installationType: 'DIY — Plug, Connect & Configure (10 min)',
+    compatibility: ['All ACIS Devices', 'Amazon Alexa', 'Google Home', 'IFTTT'],
+    rating: 4.7,
+    reviewCount: 1245,
+    isBestseller: false,
+    isNew: false
+  },
+
+  {
+    id: 'hub-mini-wireless',
+    name: 'Hub Mini Wireless Controller',
+    tagline: 'Portable Smart Hub — WiFi + IR + Scene Control',
+    category: 'hubs',
+    price: '₹3,999',
+    originalPrice: '₹5,499',
+    heroImg: hubMini,
+    gallery: [
+      { url: hubMini, caption: 'Hub Mini — Compact Wireless Controller' },
+      { url: hubMini, caption: 'LED Status Indicator' },
+      { url: hubMini, caption: 'Desktop or Shelf Mount' },
+      { url: hubMini, caption: 'App Control Dashboard' }
+    ],
+    shortDesc: 'Compact wireless hub with IR control, scene buttons, LED display, and full ACIS ecosystem connectivity.',
+    longDesc: 'Hub Mini is a simplified, pocket-sized smart home controller perfect for apartments, offices, or secondary rooms. It connects to your ACIS devices via Wi-Fi and includes built-in IR control for your TV/AC. The circular design (75mm diameter) fits on desks, shelves, or nightstands without taking much space. Features a single push button for manual control plus full remote control via the ACIS app. LED indicators show connection status and device state. Great as a secondary controller when your main MCE hub is in another room.',
+    features: [
+      { icon: '🎯', title: 'Compact Design', description: 'Just 75mm diameter × 25mm height — fits anywhere.' },
+      { icon: '📡', title: 'WiFi Connectivity', description: 'Connects to all ACIS devices via secure WiFi mesh network.' },
+      { icon: '📺', title: 'Built-in IR Control', description: 'Learn and control 30 commands for AC, TV, or other IR devices.' },
+      { icon: '💡', title: 'LED Status Display', description: 'Multi-color LED shows WiFi status and device connectivity.' },
+      { icon: '🎤', title: 'Voice Ready', description: 'Full support for Alexa and Google Home voice commands.' },
+      { icon: '🔌', title: 'USB-C Powered', description: 'Powers from any USB charger — phone adapter, power bank, etc.' }
+    ],
+    specs: [
+      { label: 'Dimensions', value: '75mm Diameter × 25mm Height' },
+      { label: 'Connectivity', value: 'Wi-Fi 2.4GHz + Bluetooth 5.0' },
+      { label: 'IR Control', value: '1 Channel, 30 Commands' },
+      { label: 'Power Input', value: '5V DC USB-C, 1A' },
+      { label: 'LED Indicator', value: 'Multi-Color Status' },
+      { label: 'Button', value: '1 Physical Button' },
+      { label: 'Speaker', value: 'Built-in Audio Feedback' },
+      { label: 'Device Support', value: 'Up to 20 ACIS Devices' },
+      { label: 'Cloud Integration', value: 'Scene Management + Automation' },
+      { label: 'Certifications', value: 'BIS, CE, RoHS' }
+    ],
+    variants: [
+      { name: 'Pearl White', color: 'Pearl White', colorCode: '#f8f8f8', price: '₹3,999', img: '../assets/Mini hub wireless controller.png' },
+      { name: 'Graphite Black', color: 'Graphite Black', colorCode: '#2a2a2a', price: '₹3,999', img: '../assets/Mini hub wireless controller.png' }
+    ],
+    testimonials: [
+      { quote: 'Perfect for my apartment. The compact size doesn\'t clutter my desk, and it controls all my ACIS devices plus AC via IR.', author: 'Shreya M.', role: 'Homeowner, Bangalore', rating: 5 },
+      { quote: 'Placed one in the bedroom and one in living room. Gives me local control in each room without running cables.', author: 'Arun K.', role: 'Homeowner, Hyderabad', rating: 5 }
+    ],
+    faqs: [
+      { question: 'Do I need the main MCE hub if I have Hub Mini?', answer: 'No. Hub Mini works standalone for basic control. MCE adds advanced scene management and handles more devices.' },
+      { question: 'Can I use multiple Hub Minis?', answer: 'Yes. Use one per room for distributed control throughout your home.' },
+      { question: 'What is the range?', answer: 'Standard Wi-Fi range — typically 20-30 meters in open space, depending on obstacles.' }
+    ],
+    inBox: [
+      'Hub Mini Controller × 1',
+      'USB-C Power Cable (1.5m) × 1',
+      '5V USB Power Adapter × 1',
+      'Wall Mount Bracket × 1',
+      'Setup Guide × 1'
+    ],
+    warranty: '2 Years Manufacturer Warranty',
+    installationType: 'DIY — Plug & Configure (5 min)',
+    compatibility: ['ACIS Devices', 'Amazon Alexa', 'Google Home', 'IFTTT'],
+    rating: 4.5,
+    reviewCount: 756,
+    isBestseller: false,
+    isNew: false
+  }
+];
+
+// ─── Section Content ──────────────────────────────────────────────────────────
+
+export const productPageContent = {
+  hero: {
+    badge: 'ACIS SMART HOME ECOSYSTEM',
+    heading: 'Complete Home Automation — Switches, Sensors, Lights & More',
+    subheading: 'From intelligent switches with OLED displays to AI-powered thermostats — every ACIS product is engineered for Indian homes and designed to work seamlessly together.',
+    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80'
+  },
+  statsBar: [
+    { label: 'Products', value: '20+' },
+    { label: 'Happy Homes', value: '50,000+' },
+    { label: 'Avg Rating', value: '4.7★' },
+    { label: 'Warranty', value: 'Up to 5 Yrs' }
+  ],
+  categorySection: {
+    badge: 'PRODUCT CATEGORIES',
+    heading: 'Built for Every Corner of Your Home',
+    description: 'Ten categories of smart devices, each designed to transform a specific aspect of your daily living — from lighting to security to climate control.'
+  },
+  gridSection: {
+    badge: 'COMPLETE PRODUCT LINEUP',
+    heading: 'Explore Our Full Range',
+    description: 'Every product is BIS-certified for Indian electrical standards, designed for seamless integration, and backed by ACIS nationwide service network.'
+  },
+  trustBanner: {
+    items: [
+      { icon: '🛡️', text: 'BIS Certified' },
+      { icon: '🔌', text: 'Indian Standards' },
+      { icon: '🚚', text: 'Free Shipping 499+' },
+      { icon: '↩️', text: '30-Day Returns' },
+      { icon: '🔧', text: 'Pan-India Service' },
+      { icon: '📞', text: '24/7 Support' }
+    ]
+  }
+};
