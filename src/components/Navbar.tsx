@@ -40,6 +40,7 @@ export function Navbar({
     } else {
       document.body.style.overflow = '';
     }
+
     return () => {
       document.body.style.overflow = '';
     };
@@ -48,21 +49,15 @@ export function Navbar({
   const navItems: {
     id: ActiveTab;
     label: string;
-    shortLabel: string;
     icon: typeof Sparkles;
   }[] = [
-    { id: 'home', label: 'Home', shortLabel: 'Home', icon: Sparkles },
-    { id: 'solutions', label: 'Solutions', shortLabel: 'Solutions', icon: Layers },
-    { id: 'product', label: 'Products', shortLabel: 'Products', icon: Package },
-    { id: 'portfolio', label: 'Portfolio', shortLabel: 'Portfolio', icon: Briefcase },
-    { id: 'app', label: 'Mobile App', shortLabel: 'App', icon: Smartphone },
-    { id: 'blog', label: 'Blog', shortLabel: 'Blog', icon: Quote }
+    { id: 'home', label: 'Home', icon: Sparkles },
+    { id: 'solutions', label: 'Solutions', icon: Layers },
+    { id: 'product', label: 'Products', icon: Package },
+    { id: 'portfolio', label: 'Portfolio', icon: Briefcase },
+    { id: 'app', label: 'Mobile App', icon: Smartphone },
+    { id: 'blog', label: 'Blog', icon: Quote }
   ];
-
-  // Bottom nav shows max 5 items (skip blog on mobile bottom bar, keep in hamburger)
-  const bottomNavItems = navItems.filter(
-    item => item.id !== 'blog'
-  );
 
   const handleNav = (tab: ActiveTab) => {
     setActiveTab(tab);
@@ -72,12 +67,9 @@ export function Navbar({
 
   return (
     <>
-      {/* ── Fixed Header ─────────────────────────────────────────────────── */}
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-transparent'
-            : 'bg-transparent'
+          scrolled ? 'bg-transparent' : 'bg-transparent'
         }`}
       >
         <nav className="flex justify-between items-center px-4 sm:px-5 md:px-10 py-3 md:py-4 max-w-7xl mx-auto">
@@ -109,6 +101,7 @@ export function Navbar({
             {navItems.map(item => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
+
               return (
                 <button
                   key={item.id}
@@ -132,16 +125,19 @@ export function Navbar({
               <Activity className="w-3 h-3 text-primary animate-blink" />
               <span>28+ STATES LIVE</span>
             </div>
+
             <button
               onClick={openContactModal}
               className="hidden md:block px-4 lg:px-5 py-2.5 bg-primary hover:bg-primary-container text-white font-semibold text-xs uppercase tracking-wider rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-primary/30 active:scale-95"
             >
               Get Quote
             </button>
+
             {/* Mobile hamburger */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="md:hidden p-2 rounded-xl bg-surface-container border border-outline-variant/30"
+              aria-label="Toggle menu"
             >
               {mobileOpen ? (
                 <X className="w-5 h-5" />
@@ -155,15 +151,15 @@ export function Navbar({
         {/* Mobile menu dropdown */}
         {mobileOpen && (
           <>
-            {/* Backdrop */}
             <div
-              className="md:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-[-1]"
+              className="md:hidden fixed inset-0 bg-black/20 backdrop-blur-sm"
               onClick={() => setMobileOpen(false)}
             />
-            <div className="md:hidden bg-white/98 backdrop-blur-xl border-t border-outline-variant/20 px-4 sm:px-5 py-4 animate-fade-in shadow-xl">
+            <div className="md:hidden relative bg-white/98 backdrop-blur-xl border-t border-outline-variant/20 px-4 sm:px-5 py-4 animate-fade-in shadow-xl">
               {navItems.map(item => {
                 const Icon = item.icon;
                 const isActive = activeTab === item.id;
+
                 return (
                   <button
                     key={item.id}
@@ -182,6 +178,7 @@ export function Navbar({
                   </button>
                 );
               })}
+
               <button
                 onClick={() => {
                   openContactModal();
@@ -195,44 +192,6 @@ export function Navbar({
           </>
         )}
       </header>
-
-      {/* ── Mobile Bottom Navigation ─────────────────────────────────────── */}
-      <div className="md:hidden fixed bottom-0 left-0 w-full z-50 bg-white/95 backdrop-blur-xl border-t border-outline-variant/30 shadow-[0_-4px_20px_rgba(0,0,0,0.07)]">
-        <div className="grid grid-cols-5 py-1.5 px-1">
-          {bottomNavItems.map(item => {
-            const Icon = item.icon;
-            const isActive = activeTab === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => handleNav(item.id)}
-                className={`flex flex-col items-center gap-0.5 py-1 transition-all ${
-                  isActive
-                    ? 'text-primary'
-                    : 'text-on-surface-variant/60'
-                }`}
-              >
-                <div
-                  className={`p-1.5 rounded-lg transition-all ${
-                    isActive ? 'bg-primary/10 scale-110' : ''
-                  }`}
-                >
-                  <Icon className="w-[18px] h-[18px]" />
-                </div>
-                <span className="text-[9px] font-bold leading-tight">
-                  {item.shortLabel}
-                </span>
-                {isActive && (
-                  <span className="w-1 h-1 bg-primary rounded-full -mt-0.5" />
-                )}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Safe area padding for iPhones */}
-        <div className="h-[env(safe-area-inset-bottom)]" />
-      </div>
     </>
   );
 }
